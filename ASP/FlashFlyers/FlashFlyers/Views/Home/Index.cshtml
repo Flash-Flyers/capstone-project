@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EventModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            padding-top: 10px;
+            font-size: 35px;
+        }
+        h2 {
+            font-size: 100px;
+        }
+
+        p {
+            font-size: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        body {
+
+            font-family: 'Roboto Slab', serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        Events
+    </h2>
+    @foreach (var evnt in Model)
+    {
+        <h1>@evnt.Name</h1>
+        <embed src="@evnt.FileName#toolbar=0" style="position: relative; height: 1500px; width: 1500px;">
+        <p>@evnt.Description</p>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    }
+</body>
