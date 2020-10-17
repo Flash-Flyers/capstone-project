@@ -183,7 +183,6 @@ C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\net
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.TagHelpers.input.cache
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.TagHelpers.output.cache
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.RazorCoreGenerate.cache
-C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Create.cshtml.g.cs
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\EventCreation\Index.cshtml.g.cs
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -350,3 +349,5 @@ C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\net
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\staticwebassets\FlashFlyers.StaticWebAssets.Manifest.cache
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\staticwebassets\FlashFlyers.StaticWebAssets.xml
 C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.genruntimeconfig.cache
+C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Create\Create.cshtml.g.cs
+C:\Users\Josh\Desktop\capstone-project\ASP\FlashFlyers\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Index.cshtml.g.cs
