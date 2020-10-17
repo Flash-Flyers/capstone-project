@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ciNOMalPnMgKFpZdPH0zDu9m5ErQ1eAr+bdsS5yNMz+7cnLMGZTcYcFlCKfxohpEs/oZJugSeeAwMB9ecfh51A==",
+  "dgSpecHash": "8NOLj+VeMaL9oYoEkOgHhZfk5EeJFvINSct6HhtzcF340LYbWZYn690YZ5RSmeeiH1wL6hCkeuVoAkI8qZ9ZXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Josh\\Desktop\\flash-flyers\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
+  "projectFilePath": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Josh\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
