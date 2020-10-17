@@ -8952,11 +8952,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Josh\\Desktop\\flash-flyers\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
+      "projectUniqueName": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
       "projectName": "FlashFlyers",
-      "projectPath": "C:\\Users\\Josh\\Desktop\\flash-flyers\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
+      "projectPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
       "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Josh\\Desktop\\flash-flyers\\ASP\\FlashFlyers\\FlashFlyers\\obj\\",
+      "outputPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
