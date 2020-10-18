@@ -1,34 +1,20 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD:ASP/FlashFlyers/FlashFlyers/obj/FlashFlyers.csproj.nuget.dgspec.json
-    "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj": {}
+    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj": {
+    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
+        "projectUniqueName": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
         "projectName": "FlashFlyers",
-        "projectPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
+        "projectPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
         "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\obj\\",
-=======
-    "C:\\Users\\Gaming\\source\\repos\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Gaming\\source\\repos\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Gaming\\source\\repos\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
-        "projectName": "FlashFlyers",
-        "projectPath": "C:\\Users\\Gaming\\source\\repos\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\FlashFlyers.csproj",
-        "packagesPath": "C:\\Users\\Gaming\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gaming\\source\\repos\\capstone-project\\ASP\\FlashFlyers\\FlashFlyers\\obj\\",
->>>>>>> individual-event-page:FlashFlyers/FlashFlyers/obj/FlashFlyers.csproj.nuget.dgspec.json
+        "outputPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gaming\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
