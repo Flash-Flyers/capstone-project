@@ -7,7 +7,7 @@
         <form method="post" enctype="multipart/form-data" asp-controller="EventCreation" asp-action="CreateEvent">
 
             <label for="evTitle">Event Ttitle: </label>
-            <input type="text" id="evTitle" name="evTitle" maxlength="50" />
+            <input type="text" id="name" name="name" maxlength="50" />
             <br />
 
             <label for="evImg">Event Image: </label>
@@ -15,19 +15,19 @@
             <br />
 
             <label for="evDesc">Event Description: </label>
-            <input type="text" id="evDesc" name="evDesc" maxlength="140" />
+            <input type="text" id="description" name="description" maxlength="140" />
             <br />
 
             <label for="evDate"> Event Date: </label>
-            <input type="date" id="evDate" name="evDate" />
+            <input type="date" id="date" name="date" />
             <br />
 
             <label for="evTime"> Event Time: </label>
-            <input type="time" id="evTime" name="evTime" />
+            <input type="time" id="time" name="time" />
             <br />
 
             <label for="locBldg">Please select a building: </label>
-            <select name="locBldg" id="locBldg">
+            <select name="building" id="building">
                 <option>Mathematical Sciences</option>
                 <option>Aeronautics and Engineering</option>
                 <option>Liquid Crystals Materials Science</option>
@@ -41,7 +41,7 @@
             <br />
 
             <label for="locRoom">Please Specify a room number</label>
-            <input type="number" id="locRoom" name="locRoom" />
+            <input type="number" id="room" name="room" />
             <br />
 
             <label for="locCamp">Please select a campus: </label>
