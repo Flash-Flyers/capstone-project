@@ -53,7 +53,7 @@
         @foreach (var evnt in Model)
         {
             //Hard-coded base directory for now.
-            <a href="https://localhost:44395/@evnt.Id" class="h1"> @evnt.Name</a>
+            <a href="https://localhost:44395/@evnt.Id" class="h1"> @evnt.Title</a>
             <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="height: 250px; width: 500px; vertical-align: middle;"></a>
             {<p class="line" style="position: relative; right: 0;">@evnt.Description</p>}
     }
