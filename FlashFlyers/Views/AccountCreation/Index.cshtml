@@ -1,0 +1,39 @@
+﻿
+
+@{ ViewData["Title"] = "Login";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create Account</h1>
+</div>
+
+<body>
+    <form method="post" enctype="multipart/form-data" asp-controller="AccountCreation" asp-action="CreateAccount">
+        <label >Enter Email: </label>
+        <input type="text" id="email" name="email" />
+        <br />
+
+        <label for="Username">Enter Username: </label>
+        <input type="text" id="username" name="username" />
+        <br />
+
+        <label for="Password">Enter Password: </label>
+        <input type="password" id="password" name="password" />
+        <br />
+
+        <label for="preferences">Please select some preferences: </label>
+        <select name="preferences" id="preferences" multiple>
+            <option value="Sports">Sports</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Public Speakers">Public Speakers</option>
+            <option value="Meditation">Meditation</option>
+            <option value="Study Groups">Study Groups</option>
+            <option value="CompSci">CompSci</option>
+            <option value="Business">Business</option>
+            <option value="Foreign Language">Foreign Language</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button type="submit" id="submit" value="Submit">Create Account</button>
+    </form>
+</body>
