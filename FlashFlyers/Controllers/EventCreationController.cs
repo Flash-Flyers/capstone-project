@@ -37,7 +37,7 @@ namespace FlashFlyers.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer)
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus)
         {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
@@ -62,10 +62,15 @@ namespace FlashFlyers.Controllers
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
-                Name = name,
+                Title = name,
                 Description = description,
-                FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName))
-            });
+                FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
+                Date = date,
+                Time = time,
+                Building = building,
+                Room = room,
+                Campus = campus
+            }); 
 
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();

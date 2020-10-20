@@ -25,13 +25,28 @@ namespace FlashFlyers.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Building")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Campus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("text");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<string>("FileName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("Room")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

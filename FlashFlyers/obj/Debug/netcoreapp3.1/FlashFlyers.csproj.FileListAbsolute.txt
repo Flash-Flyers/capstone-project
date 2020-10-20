@@ -509,7 +509,6 @@ C:\Users\Josh\Desktop\capstone-project\FlashFlyers\bin\Debug\netcoreapp3.1\runti
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.TagHelpers.input.cache
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.TagHelpers.output.cache
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.RazorCoreGenerate.cache
-C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Create.cshtml.g.cs
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\EventCreation\Index.cshtml.g.cs
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Event\Index.cshtml.g.cs
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\Event\Privacy.cshtml.g.cs
