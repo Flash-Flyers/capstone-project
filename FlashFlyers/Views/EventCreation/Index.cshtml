@@ -6,24 +6,24 @@
     <div>
         <form method="post" enctype="multipart/form-data" asp-controller="EventCreation" asp-action="CreateEvent">
 
-            <label for="evTitle">Event Ttitle: </label>
-            <input type="text" id="name" name="name" maxlength="50" />
+            <label for="evTitle">Event Title: </label>
+            <input type="text" id="name" name="name" maxlength="50" required />
             <br />
 
             <label for="evImg">Event Image: </label>
-            <input type="file" name="flyer" class="form-control" />
+            <input type="file" name="flyer" class="form-control" required />
             <br />
 
             <label for="evDesc">Event Description: </label>
-            <input type="text" id="description" name="description" maxlength="140" />
+            <input type="text" id="description" name="description" maxlength="140" required />
             <br />
 
             <label for="evDate"> Event Date: </label>
-            <input type="date" id="date" name="date" />
+            <input type="date" id="date" name="date" required />
             <br />
 
             <label for="evTime"> Event Time: </label>
-            <input type="time" id="time" name="time" />
+            <input type="time" id="time" name="time" required />
             <br />
 
             <label for="locBldg">Please select a building: </label>
@@ -45,7 +45,7 @@
             <br />
 
             <label for="locCamp">Please select a campus: </label>
-            <select name="locCamp" id="locCamp">
+            <select name="campus" id="campus">
                 <option value="KT">Kent</option>
                 <option value="GA">Geauga</option>
                 <option value="AT">Ashtabula</option>
@@ -56,12 +56,7 @@
                 <option value="TU">Tuscarawas</option>
             </select>
             <br />
-
-<<<<<<< Updated upstream
             <button type="submit" id="submit" value="Submit">Submit Event</button>
-=======
-            <button type="submit" id="submit" action="Submit">Submit Event</button>
->>>>>>> Stashed changes
             <button type="reset" id="reset">Reset From</button>
         </form>
     </div>

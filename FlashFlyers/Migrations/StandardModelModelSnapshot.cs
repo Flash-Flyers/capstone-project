@@ -43,8 +43,8 @@ namespace FlashFlyers.Migrations
                     b.Property<int>("Room")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Time")
-                        .HasColumnType("integer");
+                    b.Property<string>("Time")
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

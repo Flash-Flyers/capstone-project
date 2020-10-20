@@ -48,7 +48,14 @@
     @{
         <h1>@Model.Title</h1>
         <embed src="@Model.FileName" style="height: 250px; width: 500px; vertical-align: middle;">
-        {<p class="line" style="position: relative; right: 0;">@Model.Description</p>}
+        {
+            <p>Date: @Model.Date</p>
+            <p>Time: @Model.Time</p>
+            <p>Building: @Model.Building</p>
+            <p>Room: @Model.Room</p>
+            <p>Campus: @Model.Campus</p>
+            <p class="line" style="position: relative; right: 0;">Description: @Model.Description</p>
+        }
     }
     <a href="https://localhost:44395" class="h1">Main Events</a>
 </body>
