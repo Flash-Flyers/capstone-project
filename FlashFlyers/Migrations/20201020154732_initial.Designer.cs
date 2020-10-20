@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlashFlyers.Migrations
 {
     [DbContext(typeof(StandardModel))]
-    [Migration("20201013165532_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201020154732_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,13 +27,28 @@ namespace FlashFlyers.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Building")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Campus")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("text");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<string>("FileName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("Room")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
