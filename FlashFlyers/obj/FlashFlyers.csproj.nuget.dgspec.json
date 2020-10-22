@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {}
+    "C:\\Users\\Gaming\\Desktop\\Rep\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {
+    "C:\\Users\\Gaming\\Desktop\\Rep\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
+        "projectUniqueName": "C:\\Users\\Gaming\\Desktop\\Rep\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
         "projectName": "FlashFlyers",
-        "projectPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
-        "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\obj\\",
+        "projectPath": "C:\\Users\\Gaming\\Desktop\\Rep\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
+        "packagesPath": "C:\\Users\\Gaming\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gaming\\Desktop\\Rep\\capstone-project\\FlashFlyers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gaming\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,6 +73,14 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
               "target": "Package",
               "version": "[1.1.0, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.3.9, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [

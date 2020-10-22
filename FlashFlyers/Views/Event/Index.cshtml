@@ -49,6 +49,7 @@
         <h1>@Model.Title</h1>
         <embed src="@Model.FileName" style="height: 250px; width: 500px; vertical-align: middle;">
         {
+            <embed src="@(Model.Id)_qr.png" style="height: 250px; width: 250px; vertical-align: middle;">
             <p>Date: @Model.Date</p>
             <p>Time: @Model.Time</p>
             <p>Building: @Model.Building</p>
