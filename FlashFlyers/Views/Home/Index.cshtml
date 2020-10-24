@@ -49,7 +49,7 @@
         Events
     </h2>
     @{
-        var last = Model.Last();
+        //var last = Model.Last();
         @foreach (var evnt in Model)
         {
             DateTime eventDate = DateTime.Parse(@evnt.Date);

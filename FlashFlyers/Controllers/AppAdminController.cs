@@ -58,8 +58,6 @@ namespace FlashFlyers.Controllers
 
         public IActionResult ModifyEvent(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus)
         {
-            //var Event = new EventModel { Id = id };
-            //Event.Title = name;
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
             _standardDbContext.Update(new EventModel

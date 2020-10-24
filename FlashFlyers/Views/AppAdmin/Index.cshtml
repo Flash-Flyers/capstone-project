@@ -12,7 +12,7 @@
     Events
 </h2>
 @{
-    var last = Model.Last();
+    //var last = Model.Last();
     @foreach (var evnt in Model)
     {
         DateTime eventDate = DateTime.Parse(@evnt.Date);
@@ -22,6 +22,7 @@
         {
             //Hard-coded base directory for now.
             <a href="https://localhost:44395/@evnt.Id" class="h1"> @evnt.Title</a>
+            <br>
             <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="height: 250px; width: 500px; vertical-align: middle;"></a>
             {
                 <p>Event Id: @evnt.Id</p>
@@ -33,6 +34,20 @@
                 <p class="line" style="position: relative; right: 0;">Description: @evnt.Description</p>
 
                 <a asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Delete Event</a>
+                <br>
+                <!--
+                <a asp-controller="AppAdmin"
+                   asp-action="ModifyEvent"
+                   asp-route-id=@evnt.Id
+                   asp-route-title=@evnt.Title
+                   asp-route-flyer=@evnt.FileName
+                   asp-route-date=@evnt.Date
+                   asp-route-time=@evnt.Time
+                   asp-route-building=@evnt.Building
+                   asp-route-room=@evnt.Room
+                   asp-route-campus=@evnt.Campus
+                   asp-route-description=@evnt.Description
+                >Modify Event</a>-->
             }
         }
     }
