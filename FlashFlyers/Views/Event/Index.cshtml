@@ -3,21 +3,25 @@
     ViewData["Title"] = "Home Page";
 }
 <head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <style>
         h1 {
             font-size: 35px;
             color: white;
         }
+
         .h1 {
             font-size: 35px;
             color: white;
             position: relative;
             right: 0;
         }
+
         h2 {
             font-size: 100px;
-            color: rgb(238,174,36); 
+            color: rgb(238,174,36);
         }
 
         p {
@@ -35,6 +39,7 @@
         .line {
             border-bottom: 4px solid rgb(238,174,36);
         }
+
         .button {
             font-size: 35px;
             color: white;
@@ -54,6 +59,18 @@
             <p>Building: @Model.Building</p>
             <p>Room: @Model.Room</p>
             <p>Campus: @Model.Campus</p>
+
+            <div id='map' style='width: 400px; height: 300px;'></div>
+            <script>
+                mapboxgl.accessToken = 'pk.eyJ1IjoiamV2YW5zNjMiLCJhIjoiY2s4bm9iMXJ5MHhhYTNmbDNsaW5teTZhZSJ9.KFFOKt4hHIGyWUZ6gf86YQ';
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11',
+                    center: [-81.339585, 41.145989],
+                    zoom: 12
+                });
+            </script>
+
             <p class="line" style="position: relative; right: 0;">Description: @Model.Description</p>
         }
     }
