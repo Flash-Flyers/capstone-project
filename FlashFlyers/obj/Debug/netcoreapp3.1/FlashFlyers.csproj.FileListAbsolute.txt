@@ -530,3 +530,5 @@ C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Flash
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.pdb
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.genruntimeconfig.cache
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\PastEvents\Index.cshtml.g.cs
+C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\AppAdmin\Index.cshtml.g.cs
+C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\AppAdmin\Delete.cshtml.g.cs

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EventModel>
+@{
+    ViewData["Title"] = "AppAdmin";
+}
+
+<h1>AppAdmin</h1>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            
+            <!--<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>-->
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
