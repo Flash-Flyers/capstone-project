@@ -7,5 +7,6 @@ namespace FlashFlyers.Models
     {
         public StandardModel(DbContextOptions<StandardModel> options) : base(options) { }
         public DbSet<EventModel> Events { get; set; }
+        public object EventModel { get; internal set; }
     }
 }

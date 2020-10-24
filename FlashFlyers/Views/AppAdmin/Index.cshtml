@@ -4,27 +4,4 @@
 }
 
 <h1>AppAdmin</h1>
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            
-            <!--<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>-->
-        </td>
-    </tr>
-}
-    </tbody>
-</table>
+<a class="nav-link text-dark" asp-area="" asp-controller="AppAdmin" asp-action="Delete">Delete Event</a>

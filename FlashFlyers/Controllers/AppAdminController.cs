@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FlashFlyers.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
 namespace FlashFlyers.Controllers
 {
     public class AppAdminController : Controller
@@ -29,10 +31,30 @@ namespace FlashFlyers.Controllers
             return View();
         }
 
+        public IActionResult Modify()
+        {
+            return View();
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult DeleteEvent(int id)
+        {
+            var Event = new EventModel { Id = id };
+            _standardDbContext.Remove(Event);
+            _standardDbContext.SaveChanges();
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
+            return RedirectToAction("Index");
         }
     }
 }

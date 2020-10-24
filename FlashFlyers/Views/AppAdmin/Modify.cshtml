@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Modify";
+}
+
+<h1>Modify</h1>
+
+<body>
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-controller="AppAdmin" asp-action="Modify">
+
+            <label for="evTitle">Event Title: </label>
+            <input type="text" id="name" name="name" maxlength="50" required />
+            <br />
+            <button type="submit" id="submit" value="Submit">Modify Event</button>
+        </form>
+    </div>
+</body>
