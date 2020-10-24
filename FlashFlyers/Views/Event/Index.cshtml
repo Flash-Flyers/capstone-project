@@ -60,9 +60,11 @@
             <p>Room: @Model.Room</p>
             <p>Campus: @Model.Campus</p>
 
+            //MapBox
+            //Needs Access Token to work 
             <div id='map' style='width: 400px; height: 300px;'></div>
             <script>
-                mapboxgl.accessToken = 'pk.eyJ1IjoiamV2YW5zNjMiLCJhIjoiY2s4bm9iMXJ5MHhhYTNmbDNsaW5teTZhZSJ9.KFFOKt4hHIGyWUZ6gf86YQ';
+                mapboxgl.accessToken = '';//access token goes here
                 var map = new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/streets-v11',
