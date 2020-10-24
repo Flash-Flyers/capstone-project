@@ -52,6 +52,13 @@ namespace FlashFlyers.Controllers
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
             _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ModifyEvent(int id)
+        {
+            var Event = new EventModel { Id = id };
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
             return RedirectToAction("Index");

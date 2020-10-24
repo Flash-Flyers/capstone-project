@@ -7,10 +7,10 @@
 
 <body>
     <div>
-        <form method="post" enctype="multipart/form-data" asp-controller="AppAdmin" asp-action="Modify">
+        <form method="post" enctype="multipart/form-data" asp-controller="AppAdmin" asp-action="ModifyEvent">
 
-            <label for="evTitle">Event Title: </label>
-            <input type="text" id="name" name="name" maxlength="50" required />
+            <label for="Id">Event Id: </label>
+            <input type="text" id="Id " name="id" maxlength="50" required />
             <br />
             <button type="submit" id="submit" value="Submit">Modify Event</button>
         </form>
