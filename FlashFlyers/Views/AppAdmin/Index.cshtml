@@ -23,7 +23,10 @@
             //Hard-coded base directory for now.
             <a href="https://localhost:44395/@evnt.Id" class="h1"> @evnt.Title</a>
             <br>
-            <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="height: 250px; width: 500px; vertical-align: middle;"></a>
+            <br>
+            <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="height: 125px; width: 250px; vertical-align: middle;"></a>
+            <br>
+            <br>
             {
                 <p>Event Id: @evnt.Id</p>
                 <p>Date: @evnt.Date</p>
@@ -33,6 +36,7 @@
                 <p>Campus: @evnt.Campus</p>
                 <p class="line" style="position: relative; right: 0;">Description: @evnt.Description</p>
 
+                //This is not secure!
                 <a asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Delete Event</a>
                 <br>
                 <!--
