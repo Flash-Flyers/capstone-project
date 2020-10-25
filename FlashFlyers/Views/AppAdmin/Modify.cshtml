@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Modify";
+}
+
+<h1>Modify Event By Id</h1>
+
+<body>
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-controller="AppAdmin" asp-action="ModifyEvent">
+
+            <label for="Id">Event Id: </label>
+            <input type="text" id="Id " name="id" maxlength="50" required />
+            <br />
+
+            <label for="evTitle">Event Title: </label>
+            <input type="text" id="name" name="name" maxlength="50" required />
+            <br />
+
+            <label for="evImg">Event Image: </label>
+            <input type="file" name="flyer" class="form-control" required />
+            <br />
+
+            <label for="evDesc">Event Description: </label>
+            <input type="text" id="description" name="description" maxlength="140" required />
+            <br />
+
+            <label for="evDate"> Event Date: </label>
+            <input type="date" id="date" name="date" required />
+            <br />
+
+            <label for="evTime"> Event Time: </label>
+            <input type="time" id="time" name="time" required />
+            <br />
+
+            <label for="locBldg">Please select a building: </label>
+            <select name="building" id="building">
+                <option>Mathematical Sciences</option>
+                <option>Aeronautics and Engineering</option>
+                <option>Liquid Crystals Materials Science</option>
+                <option>Cunningham Hall</option>
+                <option>Henderson Hall</option>
+                <option>Smith Hall</option>
+                <option>Science Research</option>
+                <option>Willaims Hall</option>
+                <option>Intergrated Sciences</option>
+            </select>
+            <br />
+
+            <label for="locRoom">Please Specify a room number</label>
+            <input type="number" id="room" name="room" />
+            <br />
+
+            <label for="locCamp">Please select a campus: </label>
+            <select name="campus" id="campus">
+                <option value="KT">Kent</option>
+                <option value="GA">Geauga</option>
+                <option value="AT">Ashtabula</option>
+                <option value="EL">East Liverpool</option>
+                <option value="SA">Salem</option>
+                <option value="ST">Stark</option>
+                <option value="TR">Trumbull</option>
+                <option value="TU">Tuscarawas</option>
+            </select>
+            <br />
+
+            <button type="reset" id="reset">Reset From</button>
+            <button type="submit" id="submit" value="Submit">Modify Event</button>
+        </form>
+    </div>
+</body>
