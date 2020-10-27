@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlashFlyers.Migrations
 {
     [DbContext(typeof(StandardModel))]
-    [Migration("20201027162755_initial")]
+    [Migration("20201027165151_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,31 @@ namespace FlashFlyers.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventModel");
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("FlashFlyers.Models.LocationModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Building")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Campus")
+                        .HasColumnType("text");
+
+                    b.Property<float>("latitude")
+                        .HasColumnType("real");
+
+                    b.Property<float>("longitute")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
                 });
 #pragma warning restore 612, 618
         }

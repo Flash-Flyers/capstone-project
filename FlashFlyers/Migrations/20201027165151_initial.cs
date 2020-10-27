@@ -8,7 +8,7 @@ namespace FlashFlyers.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "EventModel",
+                name: "Events",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -24,14 +24,33 @@ namespace FlashFlyers.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventModel", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Building = table.Column<string>(nullable: true),
+                    Campus = table.Column<string>(nullable: true),
+                    latitude = table.Column<float>(nullable: false),
+                    longitute = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Locations", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EventModel");
+                name: "Events");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
         }
     }
 }
