@@ -12,7 +12,6 @@ namespace FlashFlyers.Controllers
 {
     public class SaveEventsController : Controller
     {
-        private const bool EventSaved = true;
      
         private readonly StandardModel _standardDbContext;
 
@@ -40,19 +39,9 @@ namespace FlashFlyers.Controllers
         [HttpPost] 
         public IActionResult SavedEvent(int id)
         {
-            var saveEvnt = _standardDbContext.Events.Where(x => x.Id == id).FirstOrDefault();
-            saveEvnt.Saved = EventSaved;
-            
-            /*
-            saveEvnt.Title = Event.Title;
-            saveEvnt.Description = Event.Description;
-            saveEvnt.FileName = Event.FileName;
-            saveEvnt.Date = Event.Building;
-            saveEvnt.Time = Event.Date;
-            saveEvnt.Building = Event.Time;
-            saveEvnt.Room = Event.Room;
-            saveEvnt.Campus = Event.Campus;
-            */
+            System.Diagnostics.Debug.WriteLine("ID ==" + id);
+
+            _standardDbContext.Find<EventModel>(id).Saved = true;
 
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
