@@ -7,5 +7,9 @@ namespace FlashFlyers.Models
 {
     public class LocationModel
     {
+        public string Building { get; set; }
+        public string Campus { get; set; }
+        public float latitude { get; set; }
+        public float longitute { get; set; }
     }
 }

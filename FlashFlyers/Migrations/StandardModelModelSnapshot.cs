@@ -51,7 +51,7 @@ namespace FlashFlyers.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("EventModel");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,7 +8,7 @@ namespace FlashFlyers.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Events",
+                name: "EventModel",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -24,14 +24,14 @@ namespace FlashFlyers.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.PrimaryKey("PK_EventModel", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Events");
+                name: "EventModel");
         }
     }
 }

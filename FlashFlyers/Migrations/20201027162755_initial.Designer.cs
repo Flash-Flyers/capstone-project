@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlashFlyers.Migrations
 {
     [DbContext(typeof(StandardModel))]
-    [Migration("20201020154732_initial")]
+    [Migration("20201027162755_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,7 @@ namespace FlashFlyers.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("EventModel");
                 });
 #pragma warning restore 612, 618
         }
