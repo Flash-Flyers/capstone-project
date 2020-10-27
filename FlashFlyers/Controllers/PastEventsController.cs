@@ -15,24 +15,20 @@ namespace FlashFlyers.Controllers
     public class PastEventsController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public PastEventsController(StandardModel standardDbContext)
-        {
+        public PastEventsController(StandardModel standardDbContext) {
             _standardDbContext = standardDbContext;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
             return View(_standardDbContext.Events);
         }
 
-        public IActionResult Privacy()
-        {
+        public IActionResult Privacy() {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+        public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

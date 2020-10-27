@@ -4,61 +4,57 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FlashFlyers.Models;
 using Microsoft.AspNetCore.Hosting;
+using System.Drawing.Imaging;
+using QRCoder;
+using System.Drawing.Drawing2D;
 
 namespace FlashFlyers.Controllers
 {
     public class EventCreationController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public EventCreationController(StandardModel standardDbContext)
-        {
+        public EventCreationController(StandardModel standardDbContext) {
             _standardDbContext = standardDbContext;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
+            return View(_standardDbContext);
+        }
+        public IActionResult Testing() {
             return View(_standardDbContext);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+        public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus)
-        {
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus) {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
             if (flyer == null || Path.GetExtension(flyer.FileName) == String.Empty || Path.GetExtension(flyer.FileName) == null)
                 return Content("Flyer not attached, or incorrect file extension.");
 
-            //Need check on file extension.
+            int id = new Random().Next();
 
-            var rand = new Random();
-            int id = 0;
+            while (_standardDbContext.Find<EventModel>(id) != null)
+                id = new Random().Next();
 
-            while (_standardDbContext.Find<EventModel>(id) != null || id == 0)
-                id = rand.Next();
             var path = String.Concat(Directory.GetCurrentDirectory(), "/wwwroot/", id.ToString(), Path.GetExtension(flyer.FileName));
-
-            using (var stream = new FileStream(path, FileMode.Create)) {
+            Image flyer_image;
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
                 await flyer.CopyToAsync(stream);
+                flyer_image = Image.FromStream(stream);
             }
-
-            //System.Diagnostics.Debug.WriteLine("FILE LENGTH ==", Path.GetExtension(flyer.FileName) == String.Empty, "Long");
-
+            System.Diagnostics.Debug.WriteLine("TIME ==", time, "DATE ==", date, "CAMPUS ==", campus, "BUILDING ==", building);
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
@@ -70,11 +66,56 @@ namespace FlashFlyers.Controllers
                 Building = building,
                 Room = room,
                 Campus = campus
-            }); 
-
+            });
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://www.flashflyerz.com/" + id.ToString(),
+            QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(7, Color.FromArgb(0, 31, 85), Color.FromArgb(238, 174, 36), true);
+            qrCodeImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_qr.png", ImageFormat.Png);
+            Image QR = Image.FromFile(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_qr.png");
+            int outputImageWidth = flyer_image.Width;
+
+            int outputImageHeight = flyer_image.Height;
+
+            Bitmap outputImage = new Bitmap(outputImageWidth, outputImageHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            using (Graphics graphics = Graphics.FromImage(outputImage))
+            {
+                graphics.DrawImage(flyer_image, new Rectangle(new Point(), flyer_image.Size),
+                    new Rectangle(new Point(), flyer_image.Size), GraphicsUnit.Pixel);
+                graphics.DrawImage(QR, new Rectangle(new Point(0, flyer_image.Height - QR.Height), QR.Size),
+                    new Rectangle(new Point(), QR.Size), GraphicsUnit.Pixel);
+            }
+            ImageCodecInfo myImageCodecInfo;
+            Encoder myEncoder;
+            EncoderParameter myEncoderParameter;
+            EncoderParameters myEncoderParameters;
+            myImageCodecInfo = GetEncoderInfo("image/png");
+            myEncoder = Encoder.Quality;
+            myEncoderParameters = new EncoderParameters(1);
+            myEncoderParameter = new EncoderParameter(myEncoder, 50L);
+            myEncoderParameters.Param[0] = myEncoderParameter;
+            outputImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_with_qr.png", myImageCodecInfo, myEncoderParameters);
             return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, "Kent");
+            return RedirectToAction("Testing");
+        }
+
+        private static ImageCodecInfo GetEncoderInfo(String mimeType) {
+            int j;
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                    return encoders[j];
+            }
+            return null;
         }
     }
 }

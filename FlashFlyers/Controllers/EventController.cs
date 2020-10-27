@@ -15,27 +15,23 @@ namespace FlashFlyers.Controllers
     public class EventController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public EventController(StandardModel standardDbContext)
-        {
+        public EventController(StandardModel standardDbContext) {
             _standardDbContext = standardDbContext;
         }
 
-        public IActionResult Index(int id)
-        {
+        public IActionResult Index(int id) {
             if (_standardDbContext.Find<EventModel>(id) != null)
                 return View(_standardDbContext.Find<EventModel>(id));
 
             return Error();
         }
 
-        public IActionResult Privacy()
-        {
+        public IActionResult Privacy() {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+        public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
