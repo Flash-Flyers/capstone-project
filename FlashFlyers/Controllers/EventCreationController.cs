@@ -42,10 +42,25 @@ namespace FlashFlyers.Controllers
             if (flyer == null || Path.GetExtension(flyer.FileName) == String.Empty || Path.GetExtension(flyer.FileName) == null)
                 return Content("Flyer not attached, or incorrect file extension.");
 
+            string[] broken_string = breakString(name);
+
+
             int id = new Random().Next();
 
             while (_standardDbContext.Find<EventModel>(id) != null)
                 id = new Random().Next();
+            List<int> list = new List<int>(id);
+
+            for (int i = 0; i < broken_string.Count(); ++i)
+            {
+                if (_standardDbContext.Find<SearchTagModel>(broken_string[i]) == null)
+                {
+                    _standardDbContext.Add(new SearchTagModel { tag = broken_string[i], event_id = new List<int>() });
+                    _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id.Add(id);
+                }
+                else
+                    _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id.Add(id);
+            }
 
             var path = String.Concat(Directory.GetCurrentDirectory(), "/wwwroot/", id.ToString(), Path.GetExtension(flyer.FileName));
             Image flyer_image;
@@ -54,7 +69,9 @@ namespace FlashFlyers.Controllers
                 await flyer.CopyToAsync(stream);
                 flyer_image = Image.FromStream(stream);
             }
-            System.Diagnostics.Debug.WriteLine("TIME ==", time, "DATE ==", date, "CAMPUS ==", campus, "BUILDING ==", building);
+            for (int i = 0; i < _standardDbContext.Find<SearchTagModel>(broken_string[0]).event_id.Count(); ++i)    
+                System.Diagnostics.Debug.WriteLine("ID ==" + _standardDbContext.Find<SearchTagModel>(broken_string[0]).event_id[i]);
+            System.Diagnostics.Debug.WriteLine("ID ==" + _standardDbContext.Find<SearchTagModel>(broken_string[0]).event_id.Count());
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
@@ -106,6 +123,12 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Testing");
         }
 
+        private string[] breakString(string name) 
+        {
+            string[] broken_string;
+            broken_string = name.Split(' ');
+            return broken_string;
+        }
         private static ImageCodecInfo GetEncoderInfo(String mimeType) {
             int j;
             ImageCodecInfo[] encoders;
