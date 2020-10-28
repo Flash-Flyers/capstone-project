@@ -1,33 +1,35 @@
 ﻿@{
-    ViewData["Title"] = "Event Creation";
+    ViewData["Title"] = "Event Creation Testing";
 }
-
 <body>
+    <h2 style="position: relative; right:0;">
+        Event Creation
+    </h2>
     <div>
         <form method="post" enctype="multipart/form-data" asp-controller="EventCreation" asp-action="CreateEvent">
 
             <label for="evTitle">Event Title: </label>
-            <input type="text" id="name" name="name" maxlength="50" required />
+            <input type="text" class="textarea" id="name" name="name" maxlength="50" required />
             <br />
 
             <label for="evImg">Event Image: </label>
-            <input type="file" name="flyer" class="form-control" required />
+            <input type="file" class="textarea" name="flyer" class="form-control" required />
             <br />
 
             <label for="evDesc">Event Description: </label>
-            <input type="text" id="description" name="description" maxlength="140" required />
+            <input type="text" class="textarea" id="description" name="description" maxlength="1000" required />
             <br />
 
             <label for="evDate"> Event Date: </label>
-            <input type="date" id="date" name="date" required />
+            <input type="date" class="textarea" id="date" name="date" required />
             <br />
 
             <label for="evTime"> Event Time: </label>
-            <input type="time" id="time" name="time" required />
+            <input type="time" class="textarea" id="time" name="time" required />
             <br />
 
             <label for="locBldg">Please select a building: </label>
-            <select name="building" id="building">
+            <select name="building" class="textarea" id="building">
                 <option>Mathematical Sciences</option>
                 <option>Aeronautics and Engineering</option>
                 <option>Liquid Crystals Materials Science</option>
@@ -41,11 +43,11 @@
             <br />
 
             <label for="locRoom">Please Specify a room number</label>
-            <input type="number" id="room" name="room" />
+            <input type="number" class="textarea" id="room" name="room" />
             <br />
 
             <label for="locCamp">Please select a campus: </label>
-            <select name="campus" id="campus">
+            <select name="campus" class="textarea" id="campus">
                 <option value="KT">Kent</option>
                 <option value="GA">Geauga</option>
                 <option value="AT">Ashtabula</option>
@@ -56,8 +58,8 @@
                 <option value="TU">Tuscarawas</option>
             </select>
             <br />
-            <button type="submit" id="submit" value="Submit">Submit Event</button>
-            <button type="reset" id="reset">Reset From</button>
+            <button type="submit" class="textarea" id="submit" value="Submit">Submit Event</button>
+            <button type="reset" class="textarea" id="reset">Reset From</button>
         </form>
     </div>
 </body>

@@ -64,6 +64,9 @@ namespace FlashFlyers
                     name: "home",
                     pattern: "{id?}",
                     defaults: new { controller = "Event", action = "Index" });
+                endpoints.MapControllerRoute(
+                    name: "testing_event_creation",
+                    pattern: "{controller=EventCreation}/Testing/{action=Testing}");
             });
         }
     }

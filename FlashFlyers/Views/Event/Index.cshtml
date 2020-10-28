@@ -2,60 +2,13 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-    <style>
-        h1 {
-            font-size: 35px;
-            color: white;
-        }
-        .h1 {
-            font-size: 35px;
-            color: white;
-            position: relative;
-            right: 0;
-        }
-        h2 {
-            font-size: 100px;
-            color: rgb(238,174,36); 
-        }
-
-        p {
-            font-size: 20px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            color: white;
-        }
-
-        body {
-            font-family: 'Roboto Slab', serif;
-            background: radial-gradient(#001f55, #013375);
-        }
-
-        .line {
-            border-bottom: 4px solid rgb(238,174,36);
-        }
-        .button {
-            font-size: 35px;
-            color: white;
-        }
-    </style>
-</head>
 <body>
-    <h2 style="position: relative; right:0;">
-        Event
-    </h2>
     @{
-        <h1>@Model.Title</h1>
-        <embed src="@Model.FileName" style="height: 250px; width: 500px; vertical-align: middle;">
-        {
-            <p>Date: @Model.Date</p>
-            <p>Time: @Model.Time</p>
-            <p>Building: @Model.Building</p>
-            <p>Room: @Model.Room</p>
-            <p>Campus: @Model.Campus</p>
-            <p class="line" style="position: relative; right: 0;">Description: @Model.Description</p>
-        }
+        <a href="https://www.flashflyerz.com/@Model.Id"> <h1>@Model.Title</h1></a>
+        <a href="https://www.flashflyerz.com/@Model.Id"> <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;"></a>
+        <p>@Model.Description</p>
+        <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room @Model.Campus</p>
+        <p class="line" style="position: relative; right: 0;"></p>
     }
-    <a href="https://localhost:44395" class="h1">Main Events</a>
+    <a href="https://www.flashflyerz.com/" class="h1" style=""><h2>Main Events</h2></a>
 </body>
