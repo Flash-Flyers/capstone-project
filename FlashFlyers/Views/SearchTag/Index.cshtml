@@ -1,5 +1,7 @@
-﻿@model IEnumerable<Dictionary<int,EventModel>>
-@{ ViewData["Title"] = "Home"; }
+﻿@model Dictionary<int,EventModel>
+@{ 
+    ViewData["Title"] = "SearchTag";
+}
 <body>
     <h2 style="position: relative; right:0;">
         Events
@@ -11,20 +13,22 @@
 
         <button type="submit" class="textarea" id="search" value="Submit">Submit Event</button>
     </form>
-    @{ if (!Model.Any())
-                    {
-        <h1>No current events!</h1> }
-        @foreach (var evnt in Model.Reverse())
-        {
-            DateTime eventDate = DateTime.Parse(@evnt.Date);
-            DateTime currentDate = DateTime.Now;
-
-            //if (eventDate >= currentDate)
+    @{
+            foreach (KeyValuePair<int, EventModel> theevnt in Model.Reverse())
             {
-<a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
-                    <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
-                                        <p>@evnt.Description</p>
-                                                            <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room @evnt.Campus.</p>
-                                                                                <p class="line" style="position: relative; right: 0;"></p>}
-                                                                                            } }
+                //DateTime eventDate = DateTime.Parse(@touse.Date);
+                //DateTime currentDate = DateTime.Now;
+                EventModel touse = theevnt.Value;
+                //if (eventDate >= currentDate)
+
+                <a href="~/@touse.Id"> <h1>@touse.Title</h1></a>
+                <a href="~/@touse.Id"> <embed src="@(touse.Id)_with_qr.png" /></a>
+                <p>@touse.Description</p>
+                <p>This event is happening on @touse.Date at @touse.Time at @touse.Building @touse.Room @touse.Campus.</p>
+                <p class="line" style="position: relative; right: 0;"></p>
+            }
+
+    }
+
+
 </body>

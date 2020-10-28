@@ -20,14 +20,19 @@ namespace FlashFlyers.Controllers
             {
                 string[] broken_string; //will have all search terms in string array
                 broken_string = search.Split(' ');
-                for (int i = 0; i < broken_string.Count(); i++) { //all terms
-                    for (int k = 0; k < _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id.Count(); k++) {//cycles through the amount of event ids it has
+                for (int i = 0; i < broken_string.Count(); i++) { //all search terms
+                if (_standardDbContext.Find<SearchTagModel>(broken_string[i]) == null) { }
+                else
+                {
+                    for (int k = 0; k < _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id.Count(); k++)
+                    {//cycles through the amount of event ids it has
                         if (!events.ContainsKey(_standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id[k])) //the actual event id 
                         {
                             int value = _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id[k];
                             events.Add(value, _standardDbContext.Find<EventModel>(value)); //the event id is added as well as the model
                         }
                     }
+                }
                 }
             System.Diagnostics.Debug.WriteLine("ID ==" + events.Count());
             return RedirectToAction("Index");

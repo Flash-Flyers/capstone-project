@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,5 +12,7 @@ namespace FlashFlyers.Models
 
         public DbSet<SearchTagModel> Tags { get; set; }
         public object EventModel { get; internal set; }
+
+        
     }
 }
