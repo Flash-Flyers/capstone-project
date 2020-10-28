@@ -15,6 +15,6 @@ namespace FlashFlyers.Models
         public string Time { get; set; } //Time of the event
         public string Building { get; set; } //Building where event is held
         public int Room { get; set; } //Room number of event if applicable
-        public string Campus { get; set; } //Campus where event is held
+        //public string Campus { get; set; } //Campus where event is held
     }
 }

@@ -33,14 +33,14 @@
                 <p>Time: @evnt.Time</p>
                 <p>Building: @evnt.Building</p>
                 <p>Room: @evnt.Room</p>
-                <p>Campus: @evnt.Campus</p>
+                @*<p>Campus: @evnt.Campus</p>*@
                 <p class="line" style="position: relative; right: 0;">Description: @evnt.Description</p>
 
                 //This is not secure!
                 <a asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Delete Event</a>
                 <br>
-                <!--
-                <a asp-controller="AppAdmin"
+                
+                @*<a asp-controller="AppAdmin"
                    asp-action="ModifyEvent"
                    asp-route-id=@evnt.Id
                    asp-route-title=@evnt.Title
@@ -51,7 +51,7 @@
                    asp-route-room=@evnt.Room
                    asp-route-campus=@evnt.Campus
                    asp-route-description=@evnt.Description
-                >Modify Event</a>-->
+                >Modify Event</a>*@
             }
         }
     }

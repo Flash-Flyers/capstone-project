@@ -37,7 +37,7 @@ namespace FlashFlyers.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus)
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room/*, string campus*/)
         {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
@@ -69,7 +69,7 @@ namespace FlashFlyers.Controllers
                 Time = time,
                 Building = building,
                 Room = room,
-                Campus = campus
+                //Campus = campus
             }); 
 
             _standardDbContext.SaveChanges();

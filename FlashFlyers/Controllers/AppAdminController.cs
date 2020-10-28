@@ -56,7 +56,7 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult ModifyEvent(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus)
+        public IActionResult ModifyEvent(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room/*, string campus*/)
         {
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
@@ -70,7 +70,7 @@ namespace FlashFlyers.Controllers
                 Time = time,
                 Building = building,
                 Room = room,
-                Campus = campus
+                //Campus = campus
             });
 
             _standardDbContext.SaveChanges();

@@ -28,9 +28,6 @@ namespace FlashFlyers.Migrations
                     b.Property<string>("Building")
                         .HasColumnType("text");
 
-                    b.Property<string>("Campus")
-                        .HasColumnType("text");
-
                     b.Property<string>("Date")
                         .HasColumnType("text");
 
@@ -62,9 +59,6 @@ namespace FlashFlyers.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Building")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Campus")
                         .HasColumnType("text");
 
                     b.Property<float>("latitude")

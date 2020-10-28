@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlashFlyers.Migrations
 {
     [DbContext(typeof(StandardModel))]
-    [Migration("20201027165151_initial")]
+    [Migration("20201028173127_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,9 +28,6 @@ namespace FlashFlyers.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Building")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Campus")
                         .HasColumnType("text");
 
                     b.Property<string>("Date")
@@ -64,9 +61,6 @@ namespace FlashFlyers.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Building")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Campus")
                         .HasColumnType("text");
 
                     b.Property<float>("latitude")
