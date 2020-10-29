@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj": {}
+    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj": {
+    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj",
+        "projectUniqueName": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
         "projectName": "FlashFlyers",
-        "projectPath": "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj",
-        "packagesPath": "C:\\Users\\Gaming\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\obj\\",
+        "projectPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
+        "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gaming\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

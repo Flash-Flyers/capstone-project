@@ -59,7 +59,7 @@ namespace FlashFlyers.Controllers
                 await flyer.CopyToAsync(stream);
                 flyer_image = Image.FromStream(stream);
             }
-            System.Diagnostics.Debug.WriteLine("TIME ==", time, "DATE ==", date, "CAMPUS ==", campus, "BUILDING ==", building);
+            System.Diagnostics.Debug.WriteLine("TIME ==", time, "DATE ==", date,/* "CAMPUS ==", campus,*/ "BUILDING ==", building);
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
@@ -110,7 +110,7 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, "Kent");
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
             return RedirectToAction("Testing");
         }
 
