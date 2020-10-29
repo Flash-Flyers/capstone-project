@@ -23,10 +23,9 @@ namespace FlashFlyers.Controllers
                     return new List<EventModel>();
 
                 for (int i = 0; i < broken_string.Length; ++i)
-                    if (!Char.IsLower(broken_string[i][0]))
-                        broken_string[i] = Char.ToLower(broken_string[i][0]) + broken_string[i].Substring(1);
-                
-                Dictionary<int, EventModel> events = new Dictionary<int, EventModel>();//building dictionary of events
+                    broken_string[i] = broken_string[i].ToLower();
+
+            Dictionary<int, EventModel> events = new Dictionary<int, EventModel>();//building dictionary of events
                 
                 for (int i = 0; i < broken_string.Count(); i++)//all terms
                     if (_standardDbContext.Find<SearchTagModel>(broken_string[i]) != null)

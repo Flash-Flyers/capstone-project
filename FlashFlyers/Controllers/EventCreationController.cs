@@ -45,8 +45,7 @@ namespace FlashFlyers.Controllers
             string[] broken_string = breakString(name);
 
             for (int i = 0; i < broken_string.Length; ++i)
-                if (!Char.IsLower(broken_string[i][0]))
-                    broken_string[i] = Char.ToLower(broken_string[i][0]) + broken_string[i].Substring(1);
+                broken_string[i] = broken_string[i].ToLower();
 
             int id = new Random().Next();
 
