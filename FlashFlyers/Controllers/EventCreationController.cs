@@ -44,6 +44,9 @@ namespace FlashFlyers.Controllers
 
             string[] broken_string = breakString(name);
 
+            for (int i = 0; i < broken_string.Length; ++i)
+                if (!Char.IsLower(broken_string[i][0]))
+                    broken_string[i] = Char.ToLower(broken_string[i][0]) + broken_string[i].Substring(1);
 
             int id = new Random().Next();
 
@@ -62,16 +65,6 @@ namespace FlashFlyers.Controllers
                     _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id.Add(id);
             }
 
-            var path = String.Concat(Directory.GetCurrentDirectory(), "/wwwroot/", id.ToString(), Path.GetExtension(flyer.FileName));
-            Image flyer_image;
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await flyer.CopyToAsync(stream);
-                flyer_image = Image.FromStream(stream);
-            }
-            for (int i = 0; i < _standardDbContext.Find<SearchTagModel>(broken_string[0]).event_id.Count(); ++i)    
-                System.Diagnostics.Debug.WriteLine("ID ==" + _standardDbContext.Find<SearchTagModel>(broken_string[0]).event_id[i]);
-            System.Diagnostics.Debug.WriteLine("ID ==" + _standardDbContext.Find<SearchTagModel>(broken_string[0]).event_id.Count());
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
@@ -84,15 +77,45 @@ namespace FlashFlyers.Controllers
                 Room = room,
                 Campus = campus
             });
+
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
+
+            await createImage(id, flyer);
+
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, "Kent");
+            return RedirectToAction("Testing");
+        }
+        private Bitmap createQR(int id) {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://www.flashflyerz.com/" + id.ToString(),
             QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(7, Color.FromArgb(0, 31, 85), Color.FromArgb(238, 174, 36), true);
+            return qrCodeImage;
+        }
+        private string[] breakString(string name) 
+        {
+            string[] broken_string;
+            broken_string = name.Split(' ');
+            return broken_string;
+        }
+
+        private async Task createImage(int id, IFormFile flyer) {
+            var path = String.Concat(Directory.GetCurrentDirectory(), "/wwwroot/", id.ToString(), Path.GetExtension(flyer.FileName));
+            Image flyer_image;
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await flyer.CopyToAsync(stream);
+                flyer_image = Image.FromStream(stream);
+            }
+            Bitmap qrCodeImage = createQR(id);
             qrCodeImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_qr.png", ImageFormat.Png);
             Image QR = Image.FromFile(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_qr.png");
+
             int outputImageWidth = flyer_image.Width;
 
             int outputImageHeight = flyer_image.Height;
@@ -106,28 +129,17 @@ namespace FlashFlyers.Controllers
                 graphics.DrawImage(QR, new Rectangle(new Point(0, flyer_image.Height - QR.Height), QR.Size),
                     new Rectangle(new Point(), QR.Size), GraphicsUnit.Pixel);
             }
-            ImageCodecInfo myImageCodecInfo;
+
             Encoder myEncoder;
             EncoderParameter myEncoderParameter;
             EncoderParameters myEncoderParameters;
-            myImageCodecInfo = GetEncoderInfo("image/png");
             myEncoder = Encoder.Quality;
             myEncoderParameters = new EncoderParameters(1);
             myEncoderParameter = new EncoderParameter(myEncoder, 50L);
             myEncoderParameters.Param[0] = myEncoderParameter;
-            outputImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_with_qr.png", myImageCodecInfo, myEncoderParameters);
-            return RedirectToAction("Index");
-        }
-        public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, "Kent");
-            return RedirectToAction("Testing");
-        }
 
-        private string[] breakString(string name) 
-        {
-            string[] broken_string;
-            broken_string = name.Split(' ');
-            return broken_string;
+            ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/png");
+            outputImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_with_qr.png", myImageCodecInfo, myEncoderParameters);
         }
         private static ImageCodecInfo GetEncoderInfo(String mimeType) {
             int j;
