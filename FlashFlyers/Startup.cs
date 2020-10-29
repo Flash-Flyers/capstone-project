@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -26,12 +27,11 @@ namespace FlashFlyers
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<StandardModel>(options => options.UseNpgsql(Configuration.GetConnectionString("DbConnectionString"), opt => opt.EnableRetryOnFailure()));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+               .AddEntityFrameworkStores<StandardModel>();
             services.AddControllersWithViews();
-            System.Diagnostics.Debug.WriteLine("\nConnectionString == " + Configuration.GetConnectionString("DbConnectionString") + "\n");
-            var conn = Configuration.GetConnectionString("DbConnectionString");
-            services.AddControllersWithViews();
-            services.AddDbContext<StandardModel>(options => options.UseNpgsql(conn, opt => opt.EnableRetryOnFailure()));
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +52,7 @@ namespace FlashFlyers
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -64,6 +65,10 @@ namespace FlashFlyers
                     name: "home",
                     pattern: "{id?}",
                     defaults: new { controller = "Event", action = "Index" });
+                endpoints.MapControllerRoute(
+                    name: "testing_event_creation",
+                    pattern: "{controller=EventCreation}/Testing/{action=Testing}");
+                endpoints.MapRazorPages();
             });
         }
     }

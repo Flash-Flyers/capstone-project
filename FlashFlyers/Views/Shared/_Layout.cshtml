@@ -3,29 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Flash Flyers!</title>
+    <title>@ViewData["Title"] - Flash Flyerz!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light navbar_style box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Flash Flyers!</a>
+                <a class="navbar_text" asp-area="" asp-controller="Home" asp-action="Index">Flash Flyerz!</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="EventCreation" asp-action="Index">Create Event</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PastEvents" asp-action="Index">Past Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AppAdmin" asp-action="Index">AppAdmin View/Edit</a>
+                            <a class="navbar_text" asp-area="" asp-controller="PastEvents" asp-action="Index">Past Events</a>
+                            <a class="navbar_text" asp-area="" asp-controller="EventCreation" asp-action="Index">Create Event</a>
+                            <a class="navbar_text" asp-area="" asp-controller="EventCreation" asp-action="Testing">Create Quick Event</a>
+                            <a class="navbar_text" asp-area="" asp-controller="AppAdmin" asp-action="Index">Admin Panel</a>
                         </li>
                     </ul>
                 </div>
@@ -40,7 +39,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - Flash Flyerz!
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

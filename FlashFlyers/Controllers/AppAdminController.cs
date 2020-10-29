@@ -16,39 +16,27 @@ namespace FlashFlyers.Controllers
     public class AppAdminController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public AppAdminController(StandardModel standardDbContext)
-        {
+        public AppAdminController(StandardModel standardDbContext) {
             _standardDbContext = standardDbContext;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
             return View(_standardDbContext.Events);
         }
-
-        public IActionResult Privacy()
-        {
+        public IActionResult Modify() {
             return View();
         }
 
-        public IActionResult Modify()
-        {
-            return View();
-        }
-
-        public IActionResult Delete()
-        {
+        public IActionResult Delete() {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+        public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult DeleteEvent(int id)
-        {
+        public IActionResult DeleteEvent(int id) {
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
             _standardDbContext.SaveChanges();

@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Event Creation";
+}
+<body>
+    <h2 style="position: relative; right:0;">
+        Event Creation
+    </h2>
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-controller="EventCreation" asp-action="CreateEventTesting">
+            <label for="evImg">Event Image: </label>
+            <input type="file" class="textarea" name="flyer" style="color:black;" required />
+            <button type="submit" class="textarea" id="submit" value="Submit">Submit Event</button>
+        </form>
+    </div>
+</body>
