@@ -1,0 +1,15 @@
+﻿-- This needs to be run in pgadmin in order for the Mapbox feature to work
+-- Only need to perform the insert query once, after initial migration
+-- This is only intended for the demonstration, the SysAdmin role would need to  
+-- modify the DB accordingly, should more locations be made available.
+
+insert into public."Locations"("Building", "Latitude", "Longitude")
+values
+('Mathematical Sciences', 41.145157, -81.341531),
+('Aeronautics and Engineering', 41.144480, -81.341203),
+('Liquid Crystals Materials Science', 41.144417, -81.339951),
+('Cunningham Hall', 41.146003, -81.341647),
+('Henderson Hall', 41.145221, -81.340336),
+('Smith Hall', 41.145583, -81.342497),
+('Science Research', 41.145658, -81.343020),
+('Willaims Hall', 41.149341, -81.343062);

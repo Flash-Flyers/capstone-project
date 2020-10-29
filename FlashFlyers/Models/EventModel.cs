@@ -7,12 +7,6 @@ namespace FlashFlyers.Models
 {
     public class EventModel
     {
-        /*
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string FileName { get; set; }
-        */
         public int Id { get; set; } //Event ID number
         public string Title { get; set; } //Event Title
         public string Description { get; set; } //Event Description
@@ -21,6 +15,8 @@ namespace FlashFlyers.Models
         public string Time { get; set; } //Time of the event
         public string Building { get; set; } //Building where event is held
         public int Room { get; set; } //Room number of event if applicable
-        public string Campus { get; set; } //Campus where event is held
+        //public string Campus { get; set; } //Campus where event is held
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
     }
 }

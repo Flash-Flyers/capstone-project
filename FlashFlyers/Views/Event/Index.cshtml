@@ -2,13 +2,34 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+</head>
 <body>
-    @{
-        <a href="https://www.flashflyerz.com/@Model.Id"> <h1>@Model.Title</h1></a>
-        <a href="https://www.flashflyerz.com/@Model.Id"> <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;"></a>
-        <p>@Model.Description</p>
-        <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room @Model.Campus</p>
-        <p class="line" style="position: relative; right: 0;"></p>
-    }
+    <a href="https://www.flashflyerz.com/@Model.Id"> <h1>@Model.Title</h1></a>
+    <a href="https://www.flashflyerz.com/@Model.Id"> <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;"></a>
+    <p>@Model.Description</p>
+    <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
+    <div id='map' style='width: 900px; height: 600px;'></div>
+    <p class="line" style="position: relative; right: 0;"></p>
+    <script>
+            //MapBox
+            //Needs Access Token to work
+                mapboxgl.accessToken = 'pk.eyJ1IjoiamV2YW5zNjMiLCJhIjoiY2tnbzY4cnN5MGF6ODJ3cGt5aGZ6eGp0aiJ9.TArDSi86NVbWXcmy9Ezb_w';//access token goes here
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11', //for street view style
+                    //style: 'mapbox://styles/mapbox/satellite-v9', //for satelite view style
+                    //center: [-81.341531, 41.145157], //generic center for kent campus
+                    center: [@Model.Longitude, @Model.Latitude],
+                    zoom: 16 //focused in enough to show building names
+                });
+
+                //location marker
+                var marker = new mapboxgl.Marker()
+                    .setLngLat([@Model.Longitude, @Model.Latitude])//kent state, kent campus, msb building
+                    .addTo(map);
+    </script>
     <a href="https://www.flashflyerz.com/" class="h1" style=""><h2>Main Events</h2></a>
 </body>

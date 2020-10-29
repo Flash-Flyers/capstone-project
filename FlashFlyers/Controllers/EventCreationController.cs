@@ -19,7 +19,11 @@ namespace FlashFlyers.Controllers
     public class EventCreationController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public EventCreationController(StandardModel standardDbContext) {
+        //Dictionary<String, Tuple<float, float>> coordinates;
+        //Dictionary<String, Tuple<float, float>> coordinates = new Dictionary<String, Tuple<float, float>>();
+        
+        public EventCreationController(StandardModel standardDbContext)
+        {
             _standardDbContext = standardDbContext;
         }
 
@@ -36,7 +40,8 @@ namespace FlashFlyers.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, string campus) {
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room/*, string campus*/)
+        {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
             if (flyer == null || Path.GetExtension(flyer.FileName) == String.Empty || Path.GetExtension(flyer.FileName) == null)
@@ -54,7 +59,7 @@ namespace FlashFlyers.Controllers
                 await flyer.CopyToAsync(stream);
                 flyer_image = Image.FromStream(stream);
             }
-            System.Diagnostics.Debug.WriteLine("TIME ==", time, "DATE ==", date, "CAMPUS ==", campus, "BUILDING ==", building);
+            System.Diagnostics.Debug.WriteLine("TIME ==", time, "DATE ==", date,/* "CAMPUS ==", campus,*/ "BUILDING ==", building);
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
@@ -65,8 +70,11 @@ namespace FlashFlyers.Controllers
                 Time = time,
                 Building = building,
                 Room = room,
-                Campus = campus
-            });
+                Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
+                Longitude = _standardDbContext.Find<LocationModel>(building).Longitude
+                //Campus = campus
+            }); ; 
+
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
@@ -102,7 +110,7 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, "Kent");
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
             return RedirectToAction("Testing");
         }
 
