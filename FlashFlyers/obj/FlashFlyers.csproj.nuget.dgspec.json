@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj": {}
+    "C:\\Users\\Kyle\\Desktop\\Search Folder\\capstone-project-Event_Search\\capstone-project-Event_Search\\FlashFlyers\\FlashFlyers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj": {
+    "C:\\Users\\Kyle\\Desktop\\Search Folder\\capstone-project-Event_Search\\capstone-project-Event_Search\\FlashFlyers\\FlashFlyers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj",
+        "projectUniqueName": "C:\\Users\\Kyle\\Desktop\\Search Folder\\capstone-project-Event_Search\\capstone-project-Event_Search\\FlashFlyers\\FlashFlyers.csproj",
         "projectName": "FlashFlyers",
-        "projectPath": "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\FlashFlyers.csproj",
-        "packagesPath": "C:\\Users\\Gaming\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gaming\\Desktop\\Flash1\\FlashFlyers\\obj\\",
+        "projectPath": "C:\\Users\\Kyle\\Desktop\\Search Folder\\capstone-project-Event_Search\\capstone-project-Event_Search\\FlashFlyers\\FlashFlyers.csproj",
+        "packagesPath": "C:\\Users\\Kyle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kyle\\Desktop\\Search Folder\\capstone-project-Event_Search\\capstone-project-Event_Search\\FlashFlyers\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gaming\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kyle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

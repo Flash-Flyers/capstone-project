@@ -1,0 +1,38 @@
+﻿@model Dictionary<int, EventModel>
+
+@{ ViewData["Title"] = "Home"; }
+<body>
+    <h2 style="position: relative; right:0;">
+        Events
+    </h2>
+    <form method="post" enctype="multipart/form-data" asp-controller="SearchTag" asp-action="SearchAction">
+
+        <label for="evTitle">Search</label>
+        <input type="text" id="search" name="search" maxlength="50" required />
+
+        <button type="submit" id="submit" value="Submit">Search</button>
+    </form>
+    <p>@Model.Count()</p>
+    @{ if (!Model.Any())
+        {
+
+            <h1>No current events!</h1> }
+        @foreach (KeyValuePair<int, EventModel> theevnt in Model)
+        {
+           // foreach (KeyValuePair<int, EventModel> theevnt in evnt)
+           // {
+                EventModel touse = theevnt.Value;
+                DateTime eventDate = DateTime.Parse(@touse.Date);
+                DateTime currentDate = DateTime.Now;
+
+                //if (eventDate >= currentDate)1
+                {
+                    <a href="~/@touse.Id"> <h1>@touse.Title</h1></a>
+                    <a href="~/@touse.Id"> <embed src="@(touse.Id)_with_qr.png" /></a>
+                    <p>@touse.Description</p>
+                    <p>This event is happening on @touse.Date at @touse.Time at @touse.Building @touse.Room @touse.Campus.</p>
+                    <p class="line" style="position: relative; right: 0;"></p>}
+            //}
+        }
+    }
+</body>
