@@ -64,19 +64,20 @@
             //Needs Access Token to work 
             <div id='map' style='width: 400px; height: 300px;'></div>
             //<div id='map'></div>
-            <script>
+<script>
                 mapboxgl.accessToken = 'pk.eyJ1IjoiamV2YW5zNjMiLCJhIjoiY2tnbzY4cnN5MGF6ODJ3cGt5aGZ6eGp0aiJ9.TArDSi86NVbWXcmy9Ezb_w';//access token goes here
                 var map = new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/streets-v11', //for street view style
                     //style: 'mapbox://styles/mapbox/satellite-v9', //for satelite view style
-                    center: [-81.341531, 41.145157],
+                    //center: [-81.341531, 41.145157],
+                    center: [@Model.Longitude, @Model.Latitude],
                     zoom: 15
                 });
 
                 //location marker
                 var marker = new mapboxgl.Marker()
-                    .setLngLat([-81.341531, 41.145157])//kent state, kent campus, msb building
+                    .setLngLat([@Model.Longitude, @Model.Latitude])//kent state, kent campus, msb building
                     .addTo(map);
 
                 //// Add geolocate control to the map.
@@ -95,7 +96,7 @@
                 //    }),
                 //    'top-left'
                 //);
-            </script>
+</script>
 
             <p class="line" style="position: relative; right: 0;">Description: @Model.Description</p>
         }

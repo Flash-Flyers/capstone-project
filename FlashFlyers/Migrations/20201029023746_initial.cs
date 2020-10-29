@@ -19,7 +19,9 @@ namespace FlashFlyers.Migrations
                     Date = table.Column<string>(nullable: true),
                     Time = table.Column<string>(nullable: true),
                     Building = table.Column<string>(nullable: true),
-                    Room = table.Column<int>(nullable: false)
+                    Room = table.Column<int>(nullable: false),
+                    Latitude = table.Column<float>(nullable: false),
+                    Longitude = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,15 +32,13 @@ namespace FlashFlyers.Migrations
                 name: "Locations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Building = table.Column<string>(nullable: true),
-                    latitude = table.Column<float>(nullable: false),
-                    longitute = table.Column<float>(nullable: false)
+                    Building = table.Column<string>(nullable: false),
+                    Latitude = table.Column<float>(nullable: false),
+                    Longitude = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
+                    table.PrimaryKey("PK_Locations", x => x.Building);
                 });
         }
 

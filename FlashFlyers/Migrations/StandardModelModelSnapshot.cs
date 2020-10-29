@@ -37,6 +37,12 @@ namespace FlashFlyers.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("text");
 
+                    b.Property<float>("Latitude")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("real");
+
                     b.Property<int>("Room")
                         .HasColumnType("integer");
 
@@ -53,21 +59,16 @@ namespace FlashFlyers.Migrations
 
             modelBuilder.Entity("FlashFlyers.Models.LocationModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
                     b.Property<string>("Building")
                         .HasColumnType("text");
 
-                    b.Property<float>("latitude")
+                    b.Property<float>("Latitude")
                         .HasColumnType("real");
 
-                    b.Property<float>("longitute")
+                    b.Property<float>("Longitude")
                         .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.HasKey("Building");
 
                     b.ToTable("Locations");
                 });

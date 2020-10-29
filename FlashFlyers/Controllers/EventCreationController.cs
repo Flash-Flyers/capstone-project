@@ -15,6 +15,9 @@ namespace FlashFlyers.Controllers
     public class EventCreationController : Controller
     {
         private readonly StandardModel _standardDbContext;
+        //Dictionary<String, Tuple<float, float>> coordinates;
+        //Dictionary<String, Tuple<float, float>> coordinates = new Dictionary<String, Tuple<float, float>>();
+        
         public EventCreationController(StandardModel standardDbContext)
         {
             _standardDbContext = standardDbContext;
@@ -59,6 +62,13 @@ namespace FlashFlyers.Controllers
 
             //System.Diagnostics.Debug.WriteLine("FILE LENGTH ==", Path.GetExtension(flyer.FileName) == String.Empty, "Long");
 
+            //var coordinates = new Dictionary<String, Tuple<float, float>>();
+            //var coordinates = new Dictionary<String, dynamic>();
+            //dynamic d = new System.Dynamic.ExpandoObject();
+            //coordinates[building] = d;
+            //coordinates[building] = new { latitdue = lat, longitude = lon };
+
+
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
@@ -69,8 +79,10 @@ namespace FlashFlyers.Controllers
                 Time = time,
                 Building = building,
                 Room = room,
+                Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
+                Longitude = _standardDbContext.Find<LocationModel>(building).Longitude
                 //Campus = campus
-            }); 
+            }); ; 
 
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
