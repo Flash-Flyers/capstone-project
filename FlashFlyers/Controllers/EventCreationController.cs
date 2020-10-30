@@ -92,7 +92,7 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, "Kent");
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
             return RedirectToAction("Testing");
         }
         private Bitmap createQR(int id) {
@@ -147,10 +147,10 @@ namespace FlashFlyers.Controllers
             ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/png");
             outputImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_with_qr.png", myImageCodecInfo, myEncoderParameters);
         }
-        public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
-            return RedirectToAction("Testing");
-        }
+        //public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
+        //    await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
+        //    return RedirectToAction("Testing");
+        //}
 
         private static ImageCodecInfo GetEncoderInfo(String mimeType) {
             int j;
