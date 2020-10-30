@@ -43,7 +43,7 @@ namespace FlashFlyers.Controllers
         {
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
-            _standardDbContext.Update(new EventModel
+            Event = new EventModel 
             {
                 Id = id,
                 Title = name,
@@ -57,7 +57,23 @@ namespace FlashFlyers.Controllers
                 Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
                 Likes = ++likes
                 //Campus = campus
-            });
+            };
+            _standardDbContext.Add(Event);
+            //_standardDbContext.Update(new EventModel
+            //{
+            //    Id = id,
+            //    Title = name,
+            //    Description = description,
+            //    FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
+            //    Date = date,
+            //    Time = time,
+            //    Building = building,
+            //    Room = room,
+            //    Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
+            //    Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
+            //    Likes = ++likes
+            //    //Campus = campus
+            //});
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
             return RedirectToAction("Index");
