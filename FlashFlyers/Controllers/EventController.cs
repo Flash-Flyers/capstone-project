@@ -39,7 +39,7 @@ namespace FlashFlyers.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private void Like(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes/*, string campus*/)
+        public IActionResult Like(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes/*, string campus*/)
         {
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
@@ -53,9 +53,14 @@ namespace FlashFlyers.Controllers
                 Time = time,
                 Building = building,
                 Room = room,
+                Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
+                Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
                 Likes = ++likes
                 //Campus = campus
             });
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
+            return RedirectToAction("Index");
         }
     }
 }

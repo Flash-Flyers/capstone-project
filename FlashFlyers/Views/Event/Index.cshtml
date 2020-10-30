@@ -12,7 +12,7 @@
     <p>@Model.Description</p>
     <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
     <div id='map' style='width: 900px; height: 600px;'></div>
-    <a asp-controller="EventController" asp-action="LikeEvent" asp-route-id=@Model.Id>Delete Event</a>
+    <a asp-controller="EventController" asp-action="Like" asp-route-id=@Model.Id>Like This Event</a>
     <p class="line" style="position: relative; right: 0;"></p>
     <script>
             //MapBox

@@ -40,7 +40,7 @@ namespace FlashFlyers.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room/*, string campus*/)
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes/*, string campus*/)
         {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
@@ -93,7 +93,7 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0);
             return RedirectToAction("Testing");
         }
         private Bitmap createQR(int id) {

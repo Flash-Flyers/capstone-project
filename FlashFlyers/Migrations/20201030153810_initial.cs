@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -61,7 +62,8 @@ namespace FlashFlyers.Migrations
                     Building = table.Column<string>(nullable: true),
                     Room = table.Column<int>(nullable: false),
                     Latitude = table.Column<float>(nullable: false),
-                    Longitude = table.Column<float>(nullable: false)
+                    Longitude = table.Column<float>(nullable: false),
+                    Likes = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,6 +81,18 @@ namespace FlashFlyers.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.Building);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tags",
+                columns: table => new
+                {
+                    tag = table.Column<string>(nullable: false),
+                    event_id = table.Column<List<int>>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tags", x => x.tag);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,6 +261,9 @@ namespace FlashFlyers.Migrations
 
             migrationBuilder.DropTable(
                 name: "Locations");
+
+            migrationBuilder.DropTable(
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
