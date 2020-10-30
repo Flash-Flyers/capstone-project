@@ -22,12 +22,13 @@
             DateTime eventDate = DateTime.Parse(@evnt.Date);
             DateTime currentDate = DateTime.Now;
 
-            if (eventDate >= currentDate)
-            {
-<a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
-                    <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
-                                        <p>@evnt.Description</p>
-                                                            <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room @evnt.Campus.</p>
-                                                                                <p class="line" style="position: relative; right: 0;"></p>}
-                                                                                            } }
+            if (eventDate >= currentDate) {
+                <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
+                <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
+                <p>@evnt.Description</p>
+                <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
+                <p class="line" style="position: relative; right: 0;"></p>
+            }
+        }
+    }
 </body>
