@@ -39,26 +39,27 @@ namespace FlashFlyers.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Like(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes/*, string campus*/)
+        public void Like(int id)
         {
-            var Event = new EventModel { Id = id };
-            _standardDbContext.Remove(Event);
-            Event = new EventModel 
-            {
-                Id = id,
-                Title = name,
-                Description = description,
-                FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
-                Date = date,
-                Time = time,
-                Building = building,
-                Room = room,
-                Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
-                Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
-                Likes = ++likes
-                //Campus = campus
-            };
-            _standardDbContext.Add(Event);
+        _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
+            // var Event = new EventModel { Id = id };
+            //_standardDbContext.Remove(Event);
+            // var EventLiked = new EventModel 
+            // {
+            //     Id = 1,
+            //     Title = name,
+            //     Description = description,
+            //     FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
+            //     Date = date,
+            //     Time = time,
+            //     Building = building,
+            //     Room = room,
+            //     Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
+            //     Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
+            //     Likes = ++likes
+            //     //Campus = campus
+            // };
+            // _standardDbContext.Add(EventLiked);
             //_standardDbContext.Update(new EventModel
             //{
             //    Id = id,
@@ -76,7 +77,7 @@ namespace FlashFlyers.Controllers
             //});
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
         }
     }
 }
