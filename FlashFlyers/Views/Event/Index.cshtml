@@ -12,6 +12,7 @@
     <p>@Model.Description</p>
     <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
     <div id='map' style='width: 900px; height: 600px;'></div>
+    <a asp-controller="EventController" asp-action="LikeEvent" asp-route-id=@Model.Id>Delete Event</a>
     <p class="line" style="position: relative; right: 0;"></p>
     <script>
             //MapBox
@@ -32,4 +33,5 @@
                     .addTo(map);
     </script>
     <a href="https://www.flashflyerz.com/" class="h1" style=""><h2>Main Events</h2></a>
+
 </body>

@@ -80,9 +80,10 @@ namespace FlashFlyers.Controllers
                 Building = building,
                 Room = room,
                 Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
-                Longitude = _standardDbContext.Find<LocationModel>(building).Longitude
+                Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
+                Likes = 0
                 //Campus = campus
-            }); ; 
+            }); 
 
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
