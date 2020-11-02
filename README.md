@@ -7,3 +7,30 @@ Features:
 * Search events by name, date, as well as interest tags
 * Account based security and moderation
 
+## Project Setup
+
+...
+
+### PostgreSQL Setup
+
+...
+
+### Migrations
+
+...
+
+## Usage
+
+...
+
+## Authors
+
+...
+
+## License
+
+...
+
+## Project Status
+
+...
