@@ -55,15 +55,18 @@ namespace FlashFlyers.Controllers
             var count = _standardDbContext.Likes
             .Where(o => o.EventId == id)
             .Count();
-            _standardDbContext.Find<EventModel>(id).Likes = count+1;
+            _standardDbContext.Find<EventModel>(id).Likes = count;
             //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Likes.Count();
-            _standardDbContext.Add(new LikeModel
+            if (email != null)
             {
-                EventId = id,
-                Time = DateTime.Now,
-                LikeId = new Random().Next(),
-                Email = email
-            });
+                _standardDbContext.Add(new LikeModel
+                {
+                    EventId = id,
+                    Time = DateTime.Now,
+                    LikeId = new Random().Next(),
+                    Email = email
+                });
+            }
             //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();

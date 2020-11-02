@@ -24,7 +24,7 @@
             <a href="https://localhost:44395/@evnt.Id" class="h1"> @evnt.Title</a>
             <br>
             <br>
-            <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="height: 125px; width: 250px; vertical-align: middle;"></a>
+            <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="vertical-align: middle;"></a>
             <br>
             <br>
             {
@@ -35,9 +35,10 @@
                 <p>Room: @evnt.Room</p>
                 @*<p>Campus: @evnt.Campus</p>*@
                 <p>Likes @evnt.Likes</p>
-                <p class="line" style="position: relative; right: 0;">Description: @evnt.Description</p>
+                <p>Description: @evnt.Description</p>
                 //This is not secure!
                 <a asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Delete Event</a>
+                <p class="line" style="position: relative; right: 0;"></p>
                 <br>
             }
         }
