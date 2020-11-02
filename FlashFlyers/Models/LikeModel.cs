@@ -14,5 +14,7 @@ namespace FlashFlyers.Models
         public int EventId { get; set; } //Event ID number
         [ForeignKey("AccountModel")]
         public string Email { get; set; }
+
+        public DateTime Time { get; set; }
     }
 }

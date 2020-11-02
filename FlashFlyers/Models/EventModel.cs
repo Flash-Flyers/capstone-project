@@ -19,5 +19,6 @@ namespace FlashFlyers.Models
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public int Hearts { get; set; }
+        public int Likes { get; set; }
     }
 }

@@ -18,10 +18,9 @@
     @*<a asp-controller="Event" asp-action="Heart" asp-route-id=@Model.Id>Heart This Event</a>
         <p>Hearts: @Model.Hearts</p>*@
 
-
     <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id>Like This Event</a>
 
-    <p>Likes: </p>
+    <p>Likes: @Model.Likes</p>
  
     <p class="line" style="position: relative; right: 0;"></p>
     <script>

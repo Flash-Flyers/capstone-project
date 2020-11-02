@@ -56,9 +56,13 @@ namespace FlashFlyers.Controllers
             _standardDbContext.Add(new LikeModel
             {
                 LikeId = new Random().Next(),
-                EventId = id
-                //Email = email
-            });
+                EventId = id,
+                Time = DateTime.Now
+            //Email = email
+        });
+            _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
             string idStr = id.ToString();
             string s = "/" + idStr;
             return LocalRedirect(s);
