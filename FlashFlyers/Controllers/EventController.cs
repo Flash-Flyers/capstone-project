@@ -52,14 +52,19 @@ namespace FlashFlyers.Controllers
 
         public LocalRedirectResult Like(int id, string email)
         {
-            //string email = _standardDbContext.Find<AccountModel>(CurrentUser).Email;
+            //var count = _standardDbContext.Likes
+            //.Where(o => o.LikeId == '1')
+            //.SelectMany(o => o.Email)
+            //.Count();
+
+            _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Likes.Count();
             _standardDbContext.Add(new LikeModel
             {
                 Time = DateTime.Now,
                 LikeId = new Random().Next(),
                 Email = email
             });
-            _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
+            //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
             string idStr = id.ToString();
