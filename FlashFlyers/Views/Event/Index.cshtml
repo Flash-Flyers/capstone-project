@@ -13,6 +13,9 @@
 <body>
     <a href="https://www.flashflyerz.com/@Model.Id"> <h1>@Model.Title</h1></a>
     <a href="https://www.flashflyerz.com/@Model.Id"> <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;"></a>
+    <!--Likes-->
+    <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id asp-route-email=@User.Identity.Name>Like This Event</a>
+    <p>Likes: @Model.Likes</p>
     <p>@Model.Description</p>
     <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
     <div id='map' style='width: 900px; height: 600px;'></div>
@@ -20,10 +23,6 @@
 
     @*<a asp-controller="Event" asp-action="Heart" asp-route-id=@Model.Id>Heart This Event</a>
         <p>Hearts: @Model.Hearts</p>*@
-
-    <!--Likes-->
-    <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id asp-route-email=@User.Identity.Name>Like This Event</a>
-    <p>Likes: @Model.Likes</p>
 
     <p class="line" style="position: relative; right: 0;"></p>
     <script>
