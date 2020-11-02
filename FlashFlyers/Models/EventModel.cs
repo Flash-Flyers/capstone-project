@@ -18,7 +18,6 @@ namespace FlashFlyers.Models
         //public string Campus { get; set; } //Campus where event is held
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-
-        public int Likes { get; set; }
+        public int Hearts { get; set; }
     }
 }

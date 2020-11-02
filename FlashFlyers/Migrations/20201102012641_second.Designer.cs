@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using FlashFlyers.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FlashFlyers.Migrations
 {
     [DbContext(typeof(StandardModel))]
-    partial class StandardModelModelSnapshot : ModelSnapshot
+    [Migration("20201102012641_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -60,7 +60,7 @@ namespace FlashFlyers.Controllers
                 Room = room,
                 Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
                 Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
-                Likes = 0
+                Hearts = 0
                 //Campus = campus
             });
 
