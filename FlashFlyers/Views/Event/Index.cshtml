@@ -1,5 +1,8 @@
 ﻿@*@model EventModel*@
 @model dynamic
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -18,10 +21,10 @@
     @*<a asp-controller="Event" asp-action="Heart" asp-route-id=@Model.Id>Heart This Event</a>
         <p>Hearts: @Model.Hearts</p>*@
 
-    <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id>Like This Event</a>
-
+    <!--Likes-->
+    <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id asp-route-email=@User.Identity.Name>Like This Event</a>
     <p>Likes: @Model.Likes</p>
- 
+
     <p class="line" style="position: relative; right: 0;"></p>
     <script>
             //MapBox

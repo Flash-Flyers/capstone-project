@@ -50,16 +50,15 @@ namespace FlashFlyers.Controllers
             return LocalRedirect(s);
         }
 
-        public LocalRedirectResult Like(int id)
+        public LocalRedirectResult Like(int id, string email)
         {
             //string email = _standardDbContext.Find<AccountModel>(CurrentUser).Email;
             _standardDbContext.Add(new LikeModel
             {
+                Time = DateTime.Now,
                 LikeId = new Random().Next(),
-                EventId = id,
-                Time = DateTime.Now
-            //Email = email
-        });
+                Email = email
+            });
             _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();

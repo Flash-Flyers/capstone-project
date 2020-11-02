@@ -45,6 +45,9 @@ namespace FlashFlyers.Migrations
                     b.Property<float>("Latitude")
                         .HasColumnType("real");
 
+                    b.Property<int>("Likes")
+                        .HasColumnType("integer");
+
                     b.Property<float>("Longitude")
                         .HasColumnType("real");
 
@@ -60,6 +63,27 @@ namespace FlashFlyers.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("FlashFlyers.Models.LikeModel", b =>
+                {
+                    b.Property<int>("LikeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("LikeId");
+
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("FlashFlyers.Models.LocationModel", b =>
