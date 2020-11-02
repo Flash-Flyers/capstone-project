@@ -52,10 +52,7 @@ namespace FlashFlyers.Controllers
 
         public LocalRedirectResult Like(int id, string email)
         {
-            var count = _standardDbContext.Likes
-            .Where(o => o.EventId == id)
-            .Count();
-            _standardDbContext.Find<EventModel>(id).Likes = count;
+            //_standardDbContext.Find<EventModel>(id).Likes = count+1;
             //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Likes.Count();
             if (email != null)
             {
@@ -66,6 +63,10 @@ namespace FlashFlyers.Controllers
                     LikeId = new Random().Next(),
                     Email = email
                 });
+                var count = _standardDbContext.Likes
+                .Where(o => o.EventId == id)
+                .Count();
+                _standardDbContext.Find<EventModel>(id).Likes = count + 1;
             }
             //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
             _standardDbContext.SaveChanges();
