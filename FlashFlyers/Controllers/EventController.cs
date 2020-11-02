@@ -39,45 +39,14 @@ namespace FlashFlyers.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public void Like(int id)
+        public LocalRedirectResult Like(int id)
         {
-        _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
-            // var Event = new EventModel { Id = id };
-            //_standardDbContext.Remove(Event);
-            // var EventLiked = new EventModel 
-            // {
-            //     Id = 1,
-            //     Title = name,
-            //     Description = description,
-            //     FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
-            //     Date = date,
-            //     Time = time,
-            //     Building = building,
-            //     Room = room,
-            //     Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
-            //     Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
-            //     Likes = ++likes
-            //     //Campus = campus
-            // };
-            // _standardDbContext.Add(EventLiked);
-            //_standardDbContext.Update(new EventModel
-            //{
-            //    Id = id,
-            //    Title = name,
-            //    Description = description,
-            //    FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
-            //    Date = date,
-            //    Time = time,
-            //    Building = building,
-            //    Room = room,
-            //    Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
-            //    Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
-            //    Likes = ++likes
-            //    //Campus = campus
-            //});
+            _standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
-            //return RedirectToAction("Index");
+            string idStr = id.ToString();
+            string s = "/" + idStr;
+            return LocalRedirect(s);
         }
     }
 }

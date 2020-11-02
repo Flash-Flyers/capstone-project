@@ -5,13 +5,6 @@
 <head>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-    <script language="C#" runat="server">
-
-        void LinkButton_Click(@Model sender, EventArgs e)
-        {
-            Label1.Text = "You clicked the link button";
-        }
-    </script>
 </head>
 <body>
     <a href="https://www.flashflyerz.com/@Model.Id"> <h1>@Model.Title</h1></a>
@@ -19,24 +12,6 @@
     <p>@Model.Description</p>
     <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
     <div id='map' style='width: 900px; height: 600px;'></div>
-
-    <button type="submit" id="submit" value="Submit" asp-controller="EventController" asp-action="Like" asp-route-id=@Model.Id>Like Event</button>
-    <form id="form1" runat="server">
-
-        <h3>LinkButton Example</h3>
-
-        <asp:LinkButton id="LinkButton1"
-                        Text="Click Me"
-                        Font-Names="Verdana"
-                        Font-Size="14pt"
-                        OnClick="LinkButton_Click"
-                        runat="server" />
-
-        <br />
-
-        <asp:Label id="Label1" runat="server" />
-
-    </form>
 
     <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id>Like This Event</a>
     <p class="line" style="position: relative; right: 0;"></p>
