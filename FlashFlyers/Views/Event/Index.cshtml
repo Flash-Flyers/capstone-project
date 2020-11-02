@@ -1,4 +1,5 @@
-﻿@model EventModel
+﻿@*@model EventModel*@
+@model dynamic
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -14,9 +15,14 @@
     <div id='map' style='width: 900px; height: 600px;'></div>
     <br />
 
-    <a asp-controller="Event" asp-action="Heart" asp-route-id=@Model.Id>Heart This Event</a>
-    <p>Hearts: @Model.Hearts</p>
+    @*<a asp-controller="Event" asp-action="Heart" asp-route-id=@Model.Id>Heart This Event</a>
+        <p>Hearts: @Model.Hearts</p>*@
 
+
+    <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id>Like This Event</a>
+
+    <p>Likes: </p>
+ 
     <p class="line" style="position: relative; right: 0;"></p>
     <script>
             //MapBox

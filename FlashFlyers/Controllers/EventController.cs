@@ -41,9 +41,24 @@ namespace FlashFlyers.Controllers
 
         public LocalRedirectResult Heart(int id)
         {
+
             _standardDbContext.Find<EventModel>(id).Hearts = _standardDbContext.Find<EventModel>(id).Hearts + 1;
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
+            string idStr = id.ToString();
+            string s = "/" + idStr;
+            return LocalRedirect(s);
+        }
+
+        public LocalRedirectResult Like(int id)
+        {
+            //string email = _standardDbContext.Find<AccountModel>(CurrentUser).Email;
+            _standardDbContext.Add(new LikeModel
+            {
+                LikeId = new Random().Next(),
+                EventId = id
+                //Email = email
+            });
             string idStr = id.ToString();
             string s = "/" + idStr;
             return LocalRedirect(s);
