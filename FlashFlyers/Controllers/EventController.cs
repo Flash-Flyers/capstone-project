@@ -15,24 +15,54 @@ namespace FlashFlyers.Controllers
     public class EventController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public EventController(StandardModel standardDbContext) {
+        public EventController(StandardModel standardDbContext)
+        {
             _standardDbContext = standardDbContext;
         }
 
-        public IActionResult Index(int id) {
+        public IActionResult Index(int id)
+        {
             if (_standardDbContext.Find<EventModel>(id) != null)
                 return View(_standardDbContext.Find<EventModel>(id));
 
             return Error();
         }
 
-        public IActionResult Privacy() {
+        public IActionResult Privacy()
+        {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error() {
+        public IActionResult Error()
+        {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public LocalRedirectResult Like(int id, string email)
+        {
+            //_standardDbContext.Find<EventModel>(id).Likes = count+1;
+            //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Likes.Count();
+            if (email != null)
+            {
+                _standardDbContext.Add(new LikeModel
+                {
+                    EventId = id,
+                    Time = DateTime.Now,
+                    LikeId = new Random().Next(),
+                    Email = email
+                });
+                var count = _standardDbContext.Likes
+                .Where(o => o.EventId == id)
+                .Count();
+                _standardDbContext.Find<EventModel>(id).Likes = count + 1;
+            }
+            //_standardDbContext.Find<EventModel>(id).Likes = _standardDbContext.Find<EventModel>(id).Likes + 1;
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
+            string idStr = id.ToString();
+            string s = "/" + idStr;
+            return LocalRedirect(s);
         }
     }
 }

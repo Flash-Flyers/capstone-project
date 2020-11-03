@@ -195,3 +195,4 @@ C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Flash
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\staticwebassets\FlashFlyers.StaticWebAssets.Manifest.cache
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\staticwebassets\FlashFlyers.StaticWebAssets.xml
 C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\FlashFlyers.genruntimeconfig.cache
+C:\Users\Josh\Desktop\capstone-project\FlashFlyers\obj\Debug\netcoreapp3.1\Razor\Views\SearchTag\Index.cshtml.g.cs

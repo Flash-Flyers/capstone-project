@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using FlashFlyers.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FlashFlyers.Migrations
 {
     [DbContext(typeof(StandardModel))]
-    partial class StandardModelModelSnapshot : ModelSnapshot
+    [Migration("20201030153810_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +41,6 @@ namespace FlashFlyers.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("text");
 
-                    b.Property<int>("Hearts")
-                        .HasColumnType("integer");
-
                     b.Property<float>("Latitude")
                         .HasColumnType("real");
 
@@ -63,27 +62,6 @@ namespace FlashFlyers.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("FlashFlyers.Models.LikeModel", b =>
-                {
-                    b.Property<int>("LikeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("LikeId");
-
-                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("FlashFlyers.Models.LocationModel", b =>
