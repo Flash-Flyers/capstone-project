@@ -9,6 +9,11 @@
 <body>
     <h1>@Model.Title</h1>
     <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;">
+    <br />
+    <a href="@(Model.Id)_with_qr.png" download>Download Image with QR Code</a>
+    <br />
+    <a href="@(Model.Id)_qr.png" download>Download QR Code</a>
+    <br />
     <p>@Model.Description</p>
     <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
     <div id='map' style='width: 900px; height: 600px;'></div>
