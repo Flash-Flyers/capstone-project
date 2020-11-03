@@ -39,17 +39,6 @@ namespace FlashFlyers.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public LocalRedirectResult Heart(int id)
-        {
-
-            _standardDbContext.Find<EventModel>(id).Hearts = _standardDbContext.Find<EventModel>(id).Hearts + 1;
-            _standardDbContext.SaveChanges();
-            _standardDbContext.Dispose();
-            string idStr = id.ToString();
-            string s = "/" + idStr;
-            return LocalRedirect(s);
-        }
-
         public LocalRedirectResult Like(int id, string email)
         {
             //_standardDbContext.Find<EventModel>(id).Likes = count+1;
