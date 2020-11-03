@@ -7,8 +7,8 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-    <a href="https://www.flashflyerz.com/@Model.Id"> <h1>@Model.Title</h1></a>
-    <a href="https://www.flashflyerz.com/@Model.Id"> <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;"></a>
+    <h1>@Model.Title</h1>
+    <embed src="@(Model.Id)_with_qr.png" style="vertical-align: middle;">
     <p>@Model.Description</p>
     <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
     <div id='map' style='width: 900px; height: 600px;'></div>
@@ -31,5 +31,5 @@
                     .setLngLat([@Model.Longitude, @Model.Latitude])//kent state, kent campus, msb building
                     .addTo(map);
     </script>
-    <a href="https://www.flashflyerz.com/" class="h1" style=""><h2>Main Events</h2></a>
+    <a class="h1" asp-area="" asp-controller="Home" asp-action="Index"><h2>Main Events</h2></a>
 </body>
