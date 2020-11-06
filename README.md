@@ -14,6 +14,7 @@ This project is a demo web application intended to be used to share Kent State U
 * The project uses the ASP.NET Core framework
 * PostgreSQL is the database management system required to implement the models
 * pgAdmin is the Administration access tool of choice for this project
+* An email address is required to set up email reminders to be sent from
 
 ### Database Setup and Build Steps
 
