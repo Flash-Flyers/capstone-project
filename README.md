@@ -30,6 +30,8 @@ This project is a demo web application intended to be used to share Kent State U
 * IIS Express
 * Mapbox GL
 * QRCoder
+* MailKit
+* Ethereal Email
 
 ## Authors
 
