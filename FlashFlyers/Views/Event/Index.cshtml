@@ -24,6 +24,8 @@
     @*<a asp-controller="Event" asp-action="Heart" asp-route-id=@Model.Id>Heart This Event</a>
         <p>Hearts: @Model.Hearts</p>*@
 
+    <a asp-controller="Email" asp-action="sendEmail" asp-route-id=@Model.Id>Send Reminder Email</a>
+
     <p class="line" style="position: relative; right: 0;"></p>
     <script>
             //MapBox
