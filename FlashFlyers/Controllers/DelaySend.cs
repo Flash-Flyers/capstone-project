@@ -1,35 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using MailKit;
+﻿using MailKit.Security;
+using Microsoft.Extensions.Hosting;
 using MimeKit;
 using MimeKit.Text;
-using System.Net.Mail;
-using MailKit.Security;
-using MailKit.Net;
-using MailKit.Net.Smtp;
-using System.Net.Mime;
+using System;
 using System.Threading;
-using System.ComponentModel;
-using System.Collections;
-using Microsoft.Extensions.Hosting;
-using System.Web;
-using Microsoft.Extensions.Hosting.Internal;
-using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace FlashFlyers.Controllers
 {
-    public class EmailController : Controller
+    public class DelaySend : IHostedService
     {
-        public IActionResult Index()
+        public Task StartAsync(CancellationToken cancellationToken)
         {
-            return View();
+            Task.Run(TaskRoutine, cancellationToken);
+            return Task.CompletedTask;
         }
 
-        public LocalRedirectResult sendEmail(int id)
+        public Task StopAsync(CancellationToken cancellationToken)
         {
+            Console.WriteLine("Sync Task stopped");
+            return null;
+        }
+
+        public void TaskRoutine()
+        {
+            //Wait 1 minute till next execution
+            DateTime nextStop = DateTime.Now.AddMinutes(1);
+            var timeToWait = nextStop - DateTime.Now;
+            var millisToWait = timeToWait.TotalMilliseconds;
+            Thread.Sleep((int)millisToWait);
+
             // create email message
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("brendon.cremin75@ethereal.email"));
@@ -43,9 +43,7 @@ namespace FlashFlyers.Controllers
             smtp.Authenticate("brendon.cremin75@ethereal.email", "BKw63Nr9qJSFEZbwQ7");
             smtp.Send(email);
             smtp.Disconnect(true);
-            string idStr = id.ToString();
-            string s = "/" + idStr;
-            return LocalRedirect(s);
+
         }
     }
 }

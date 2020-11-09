@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FlashFlyers.Models;
 using Microsoft.AspNetCore.Http;
+using FlashFlyers.Controllers;
 
 namespace FlashFlyers
 {
@@ -32,6 +33,7 @@ namespace FlashFlyers
                .AddEntityFrameworkStores<StandardModel>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSingleton<IHostedService, DelaySend>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
