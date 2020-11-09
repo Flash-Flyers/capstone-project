@@ -12,6 +12,6 @@ namespace FlashFlyers.Models
         public object EventModel { get; internal set; }
         public DbSet<LocationModel> Locations { get; set; }
         public DbSet<LikeModel> Likes { get; set; }
-        public DbSet<EmailReminderModel> EmailReminders { get; set; }
+        public DbSet<EmailReminderModel> EmailReminder { get; set; }
     }
 }

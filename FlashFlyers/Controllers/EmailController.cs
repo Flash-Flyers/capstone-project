@@ -25,16 +25,28 @@ namespace FlashFlyers.Controllers
     public class EmailController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        public EmailController(StandardModel standardDbContext)
+        //private readonly DelaySend _send;
+        public EmailController(StandardModel standardDbContext/*, DelaySend send*/)
         {
             _standardDbContext = standardDbContext;
+            //_send = send;
         }
+
+        //public void Test()
+        //{
+        //    _send.TaskRoutine();
+        //    _send.Email();
+        //}
         public IActionResult Index()
         {
             return View();
         }
+        public string getEmail(int i)
+        {
+            return "joe@mail.com";
+        }
 
-        public LocalRedirectResult sendEmail(int id, string date, string email)
+        public LocalRedirectResult scheduleEmail(int id, string date, string email)
         {
             //// create email message
             //var email = new MimeMessage();
@@ -52,7 +64,7 @@ namespace FlashFlyers.Controllers
             //string idStr = id.ToString();
             //string s = "/" + idStr;
             //return LocalRedirect(s);
-
+            //Test();
             if (email != null)
             {
                 _standardDbContext.Add(new EmailReminderModel
