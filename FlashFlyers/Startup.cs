@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FlashFlyers.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace FlashFlyers
 {
@@ -28,10 +31,21 @@ namespace FlashFlyers
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StandardModel>(options => options.UseNpgsql(Configuration.GetConnectionString("DbConnectionString"), opt => opt.EnableRetryOnFailure()));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-               .AddEntityFrameworkStores<StandardModel>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //.AddEntityFrameworkStores<StandardModel>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+              .AddEntityFrameworkStores<StandardModel>()
+              .AddDefaultTokenProviders()
+              .AddDefaultUI();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+           // services.AddMvc(options =>
+            //{
+             //   var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+              //  options.Filters.Add(new AuthorizationFilter(policy));
+            //}).AddXmlSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +68,8 @@ namespace FlashFlyers
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+           
 
             app.UseEndpoints(endpoints =>
             {
