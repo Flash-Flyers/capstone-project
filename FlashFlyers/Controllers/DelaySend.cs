@@ -12,12 +12,9 @@ namespace FlashFlyers.Controllers
 {
     public class DelaySend : IHostedService
     {
-        //Dictionary<string, int> eventRe = new Dictionary<string, int>();
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            //eventRe.Add("joe@mail.com", 112233);
-            //eventRe.Add("bob@mail.com", 112233);
-            Task.Run(TaskRoutine, cancellationToken);
+            //Task.Run(TaskRoutine, cancellationToken);
             return Task.CompletedTask;
         }
 
@@ -31,7 +28,6 @@ namespace FlashFlyers.Controllers
 
         public void TaskRoutine()
         {
-            // Wait 1 minute till next execution
             DateTime nextStop = DateTime.Now.AddSeconds(10);
             var timeToWait = nextStop - DateTime.Now;
             var millisToWait = timeToWait.TotalMilliseconds;

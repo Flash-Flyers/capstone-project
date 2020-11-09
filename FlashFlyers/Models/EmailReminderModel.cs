@@ -1,12 +1,16 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlashFlyers.Models
 {
-    public class AccountModel
+    public class EmailReminderModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public int EmailReminderId { get; set; }
+        public int EventId { get; set; }
         public string Email { get; set; }
+        public string Date { get; set; }
     }
 }

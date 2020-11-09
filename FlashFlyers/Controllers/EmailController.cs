@@ -18,31 +18,53 @@ using Microsoft.Extensions.Hosting;
 using System.Web;
 using Microsoft.Extensions.Hosting.Internal;
 using System.Runtime.CompilerServices;
+using FlashFlyers.Models;
 
 namespace FlashFlyers.Controllers
 {
     public class EmailController : Controller
     {
+        private readonly StandardModel _standardDbContext;
+        public EmailController(StandardModel standardDbContext)
+        {
+            _standardDbContext = standardDbContext;
+        }
         public IActionResult Index()
         {
             return View();
         }
 
-        public LocalRedirectResult sendEmail(int id)
+        public LocalRedirectResult sendEmail(int id, string date, string email)
         {
-            // create email message
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("brendon.cremin75@ethereal.email"));
-            email.To.Add(MailboxAddress.Parse("jevans63@kent.edu"));
-            email.Subject = "Test Email Subject";
-            email.Body = new TextPart(TextFormat.Html) { Text = "<h1>Example HTML Message Body</h1>" };
+            //// create email message
+            //var email = new MimeMessage();
+            //email.From.Add(MailboxAddress.Parse("brendon.cremin75@ethereal.email"));
+            //email.To.Add(MailboxAddress.Parse("jevans63@kent.edu"));
+            //email.Subject = "Test Email Subject";
+            //email.Body = new TextPart(TextFormat.Html) { Text = "<h1>Example HTML Message Body</h1>" };
 
-            // send email
-            using var smtp = new MailKit.Net.Smtp.SmtpClient();
-            smtp.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("brendon.cremin75@ethereal.email", "BKw63Nr9qJSFEZbwQ7");
-            smtp.Send(email);
-            smtp.Disconnect(true);
+            //// send email
+            //using var smtp = new MailKit.Net.Smtp.SmtpClient();
+            //smtp.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
+            //smtp.Authenticate("brendon.cremin75@ethereal.email", "BKw63Nr9qJSFEZbwQ7");
+            //smtp.Send(email);
+            //smtp.Disconnect(true);
+            //string idStr = id.ToString();
+            //string s = "/" + idStr;
+            //return LocalRedirect(s);
+
+            if (email != null)
+            {
+                _standardDbContext.Add(new EmailReminderModel
+                {
+                    EmailReminderId = new Random().Next(),
+                    EventId = id,
+                    Date = date,
+                    Email = email
+                });
+            }
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
             string idStr = id.ToString();
             string s = "/" + idStr;
             return LocalRedirect(s);
