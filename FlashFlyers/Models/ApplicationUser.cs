@@ -12,8 +12,10 @@ namespace FlashFlyers.Models
         public ApplicationUser() {
             Likes = new List<string>();
             SavedEvents = new List<int>();
+            AuthoredEvents = new List<int>();
         }
         public List<string> Likes { get; set; }
         public List<int> SavedEvents { get; set; }
+        public List<int> AuthoredEvents { get; set; }
     }
 }
