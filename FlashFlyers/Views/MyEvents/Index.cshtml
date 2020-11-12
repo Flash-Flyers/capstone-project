@@ -20,13 +20,10 @@
             <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
             <p>@evnt.Description</p>
             <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
-            <p class="line" style="position: relative; right: 0;"></p>
             @if (User.Identity.IsAuthenticated) {
-                <form method="post" enctype="multipart/form-data" asp-controller="MyEvents" asp-action="UserEventDelete">
-                    <input type="text" id="event_id" name="event_id" value="@evnt.Id" hidden><br><br>
-                    <button type="submit" class="textarea" id="submit" value="Submit">Delete Event</button>
-                </form>
+                <a style="color:darkred;" asp-controller="MyEvents" asp-action="UserEventDelete" asp-route-id=@evnt.Id>Delete Event</a>
             }
+            <p class="line" style="position: relative; right: 0;"></p>
         }
     }
 </body>

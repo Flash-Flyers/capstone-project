@@ -14,18 +14,17 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FlashFlyers.Controllers
 {
-    public class SavedEventsController : Controller
+    public class MyEventsController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly StandardModel _standardDbContext;
-        public SavedEventsController(StandardModel standardDbContext, UserManager<ApplicationUser> userManager)
-        {
+        public MyEventsController(StandardModel standardDbContext, UserManager<ApplicationUser> userManager) {
             _standardDbContext = standardDbContext;
             _userManager = userManager;
         }
         public IActionResult Index() {
             if (User.Identity.IsAuthenticated) {
-                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).SavedEvents;
+                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).AuthoredEvents;
                 if (event_ids == null)
                     return View(new List<EventModel>());
                 List<EventModel> events = new List<EventModel>();
@@ -37,30 +36,22 @@ namespace FlashFlyers.Controllers
             else
                 return View(new List<EventModel>());
         }
-        public IActionResult Save(int event_id) {
-            if (_standardDbContext.Find<EventModel>(event_id) == null)
-                return Error();
 
-
-            if (User.Identity.IsAuthenticated) {
-                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).SavedEvents;
-
-                if (event_ids == null)
-                    event_ids = new List<int>();
-
-                if (!event_ids.Contains(event_id))
-                    event_ids.Add(event_id);
-                else event_ids.Remove(event_id);
-
+        public IActionResult UserEventDelete(int id) {
+            ApplicationUser user = _standardDbContext.Users.Find(_userManager.GetUserId(User));
+            if (_standardDbContext.Find<EventModel>(id) != null && user.AuthoredEvents.Contains(id)) {
+                user.AuthoredEvents.Remove(id);
+                _standardDbContext.Remove(_standardDbContext.Find<EventModel>(id));
                 _standardDbContext.SaveChanges();
-                _standardDbContext.Dispose();
-                return Redirect("~/SavedEvents");
+                return Redirect("~/MyEvents");
             }
-            return Error();
+            else
+                return Error();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error() {
+        public IActionResult Error()
+        {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

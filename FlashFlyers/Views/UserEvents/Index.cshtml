@@ -1,27 +1,19 @@
 ﻿@model IEnumerable<EventModel>
 @{
-    ViewData["Title"] = "Saved Events";
+    ViewData["Title"] = "Home";
 }
 <body>
     <h2 style="position: relative; right:0;">
-        Saved Events
+        Events
     </h2>
-    @{
-        if (!Model.Any()) {
-            <h1>No current events!</h1>
-        }
         @foreach (var evnt in Model.Reverse()) {
-            DateTime eventDate = DateTime.Parse(@evnt.Date);
-            DateTime currentDate = DateTime.Now;
-
-            if (eventDate >= currentDate) {
                 <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
                 <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
                 <p>@evnt.Description</p>
                 <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
-                <a style="color:forestgreen;" asp-controller="SavedEvents" asp-action="Save" asp-route-id=@evnt.Id>Unsave Event</a>
                 <p class="line" style="position: relative; right: 0;"></p>
-            }
         }
-    }
+        if (!Model.Any()) { 
+            <h1>No submitted events!</h1> 
+        }
 </body>
