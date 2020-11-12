@@ -10,9 +10,11 @@ using Microsoft.Extensions.Logging;
 using FlashFlyers.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FlashFlyers.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AppAdminController : Controller
     {
         private readonly StandardModel _standardDbContext;

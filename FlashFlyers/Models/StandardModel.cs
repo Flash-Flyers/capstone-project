@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlashFlyers.Models
 {
-    public class StandardModel : IdentityDbContext
+    public class StandardModel : IdentityDbContext<ApplicationUser> //added application user so now migrations know to use the extended version when making account tables
     {
         public StandardModel(DbContextOptions<StandardModel> options) : base(options) { }
         public DbSet<EventModel> Events { get; set; }

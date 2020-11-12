@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {}
+    "C:\\Users\\Kyle\\Desktop\\Github Capstone\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {
+    "C:\\Users\\Kyle\\Desktop\\Github Capstone\\capstone-project\\FlashFlyers\\FlashFlyers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
+        "projectUniqueName": "C:\\Users\\Kyle\\Desktop\\Github Capstone\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
         "projectName": "FlashFlyers",
-        "projectPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
-        "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Josh\\Desktop\\capstone-project\\FlashFlyers\\obj\\",
+        "projectPath": "C:\\Users\\Kyle\\Desktop\\Github Capstone\\capstone-project\\FlashFlyers\\FlashFlyers.csproj",
+        "packagesPath": "C:\\Users\\Kyle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kyle\\Desktop\\Github Capstone\\capstone-project\\FlashFlyers\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kyle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
