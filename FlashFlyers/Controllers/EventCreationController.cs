@@ -13,9 +13,11 @@ using Microsoft.AspNetCore.Hosting;
 using System.Drawing.Imaging;
 using QRCoder;
 using System.Drawing.Drawing2D;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FlashFlyers.Controllers
 {
+    [Authorize]
     public class EventCreationController : Controller
     {
         private readonly StandardModel _standardDbContext;
