@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FlashFlyers.Models;
 using Microsoft.AspNetCore.Http;
+using FlashFlyers.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -40,6 +41,7 @@ namespace FlashFlyers
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSingleton<IHostedService, DelaySend>();
 
            // services.AddMvc(options =>
             //{
