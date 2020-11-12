@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EventModel>
+@{
+    ViewData["Title"] = "Favorited Events";
+}
+<body>
+    <h2 style="position: relative; right:0;">
+        Favorite Events
+    </h2>
+    @{
+        if (!Model.Any()) {
+            <h1>No current events!</h1>
+        }
+        @foreach (var evnt in Model.Reverse()) {
+            DateTime eventDate = DateTime.Parse(@evnt.Date);
+            DateTime currentDate = DateTime.Now;
+
+            if (eventDate >= currentDate) {
+                <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
+                <a href="~/@evnt.Id"> <img src="@(evnt.Id)_with_qr.png" class="LargeDisplay" /></a>
+                <p>@evnt.Description</p>
+                <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
+                <!--
+                <form method="post" enctype="multipart/form-data" asp-controller="FavEvents" asp-action="Unfav">
+                    <input type="text" name="Id" id="Id" value="@evnt.Id" />
+                    <button type="submit" id="submmit" value="submit">Remove From Favorites</button>
+                </form>
+                -->
+                <div class="line" style="position: relative; right: 0;"></div>
+            }
+        }
+    }
+</body>
