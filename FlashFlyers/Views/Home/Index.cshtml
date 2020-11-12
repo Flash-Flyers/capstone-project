@@ -24,9 +24,24 @@
 
             if (eventDate >= currentDate) {
                 <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
-                <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
+                <figure>
+                    <a href="~/@evnt.Id"> <img src="@(evnt.Id)_with_qr.png" class="LargeDisplay" /></a>
+                    <figcaption>
+                        <a href="@(evnt.Id)_with_qr.png" download>Download Image with QR Code</a>
+                        /
+                        <a href="@(evnt.Id)_qr.png" download>Download QR Code</a>
+                        <br />
+                    </figcaption>
+                </figure>
                 <p>@evnt.Description</p>
                 <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
+                @if (User.Identity.IsAuthenticated) 
+                {
+                    <form method="post" enctype="multipart/form-data" asp-controller="FavEvents" asp-action="Fav">
+                        <input type="text" id="event_id" name="event_id" value="@evnt.Id" hidden>
+                        <button type="submit" id="submit" value="Submit">Favorite Event</button>
+                    </form>
+                }
                 <p class="line" style="position: relative; right: 0;"></p>
             }
         }
