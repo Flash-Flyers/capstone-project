@@ -26,12 +26,12 @@
                             <a class="navbar_text" asp-area="" asp-controller="PastEvents" asp-action="Index">Past Events</a>
                             <a class="navbar_text" asp-area="" asp-controller="EventCreation" asp-action="Index">Create Event</a>
                             <a class="navbar_text" asp-area="" asp-controller="EventCreation" asp-action="Testing">Create Quick Event</a>
-                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                            {
-                                  <a class="navbar_text" asp-area="" asp-controller="Admin" asp-action="ListRoles">Manage Roles</a>
-                                  <a class="navbar_text" asp-area="" asp-controller="AppAdmin" asp-action="Index">Admin Panel</a>
+                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin")) {
+                            <a class="navbar_text" asp-area="" asp-controller="Admin" asp-action="ListRoles">Manage Roles</a>
+                                            <a class="navbar_text" asp-area="" asp-controller="AppAdmin" asp-action="Index">Admin Panel</a>}
+                            @if (User.Identity.IsAuthenticated) {
+                            <a class="navbar_text" asp-area="" asp-controller="SavedEvents" asp-action="Index">Saved Events</a> 
                             }
-
                         </li>
                     </ul>
                 </div>
