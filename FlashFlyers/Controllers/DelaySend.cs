@@ -17,15 +17,19 @@ using System.Linq;
 
 namespace FlashFlyers.Models
 {
+    // background task using IHostedService
     public class DelaySend : IHostedService
     {
+        
         private readonly IServiceScopeFactory _serviceScopeFactory;
 
         public DelaySend(IServiceScopeFactory serviceScopeFactory)
         {
             _serviceScopeFactory = serviceScopeFactory;
         }
-
+        
+        // TaskRoutine() needs to be run asynchronously 
+        // to allow the web access to continue.
         public Task StartAsync(CancellationToken cancellationToken)
         {
             Task.Run(TaskRoutine, cancellationToken);
@@ -38,12 +42,17 @@ namespace FlashFlyers.Models
             return null;
         }
 
+        // this function checks the database every 24 hours
+        // sends an email reminder to any user who requested 
+        // for an event which will take place within 48 hours
         public void TaskRoutine()
         {
+            // gets the current date in yyyy-MM-dd format
             string twoDays = DateTime.Now.AddHours(48).ToString("yyyy-MM-dd");
             while (true)
             {
                 // getting scope for database context since this is a singleton class
+                // uses a dependancy injection to get access to the standard model
                 using (var scope = _serviceScopeFactory.CreateScope())
                 {
                     var dbContext = scope.ServiceProvider.GetRequiredService<StandardModel>();
