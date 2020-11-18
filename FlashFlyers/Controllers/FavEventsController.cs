@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FlashFlyers.Controllers
 {
+    // this controller class handles the favorited events functionality
+    // it required the user is authenticated and looks at the standard model for events which the 
+    // user has saved for future reference.
     public class FavEventsController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -23,6 +26,8 @@ namespace FlashFlyers.Controllers
             _standardDbContext = standardDbContext;
             _userManager = userManager;
         }
+        
+        // user must be authenticated in order to access favorite events feature
         public IActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -39,11 +44,12 @@ namespace FlashFlyers.Controllers
             else
                 return View(new List<EventModel>());
         }
+        
+        // this function stores the saved event in a list unique to each user
         public IActionResult Save(int id)
         {
             if (_standardDbContext.Find<EventModel>(id) == null)
                 return Error();
-
 
             if (User.Identity.IsAuthenticated)
             {
@@ -62,7 +68,8 @@ namespace FlashFlyers.Controllers
             }
             return Error();
         }
-
+        
+        // error handling and display
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
