@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FlashFlyers.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class AppAdminController : Controller
     {
         private readonly StandardModel _standardDbContext;
@@ -41,6 +41,16 @@ namespace FlashFlyers.Controllers
         public IActionResult DeleteEvent(int id) {
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ApproveEvent(int id)
+        {
+            EventModel unapproved_event = _standardDbContext.Find<EventModel>(id);
+            if (unapproved_event != null)
+                unapproved_event.Approved = true;
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
             return RedirectToAction("Index");

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<EventModel>
+@{
+    ViewData["Title"] = "Home";
+}
+<body>
+    <h2 style="position: relative; right:0;">
+        Events
+    </h2>
+        @foreach (var evnt in Model.Reverse()) {
+                <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
+                <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
+                <p>@evnt.Description</p>
+                <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
+                <p class="line" style="position: relative; right: 0;"></p>
+        }
+        if (!Model.Any()) { 
+            <h1>No submitted events!</h1> 
+        }
+</body>
