@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FlashFlyers.Controllers
 {
+        // this controller class handles the search functionality for the website
         public class SearchTagController : Controller
         {
             private readonly StandardModel _standardDbContext;
