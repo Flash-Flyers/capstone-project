@@ -17,13 +17,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FlashFlyers.Controllers
 {
+    //  this controller class is meant to handle event event creation
+    // it is called by the EventCreation View via an asp-action
     [Authorize]
     public class EventCreationController : Controller
     {
         private readonly StandardModel _standardDbContext;
-        //Dictionary<String, Tuple<float, float>> coordinates;
-        //Dictionary<String, Tuple<float, float>> coordinates = new Dictionary<String, Tuple<float, float>>();
-        
         public EventCreationController(StandardModel standardDbContext)
         {
             _standardDbContext = standardDbContext;
@@ -40,15 +39,18 @@ namespace FlashFlyers.Controllers
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        
+        // this async function is used to open the database context and store an event instance using the
+        // parameters passed through an html form
+        // it includes logic for the tagging system, as well as calls to function createImage
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes/*, string campus*/)
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes)
         {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
             if (flyer == null || Path.GetExtension(flyer.FileName) == String.Empty || Path.GetExtension(flyer.FileName) == null)
                 return Content("Flyer not attached, or incorrect file extension.");
-
+            
             string[] broken_string = breakString(name);
 
             for (int i = 0; i < broken_string.Length; ++i)
@@ -84,7 +86,6 @@ namespace FlashFlyers.Controllers
                 Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
                 Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
                 Likes = 0
-                //Campus = campus
             }); 
 
             _standardDbContext.SaveChanges();
@@ -94,10 +95,13 @@ namespace FlashFlyers.Controllers
 
             return RedirectToAction("Index");
         }
+        // the purpose of this function is to create a quick event for easier testing
         public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
             await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0);
             return RedirectToAction("Testing");
         }
+        
+        // this function user the QRCoder API in order to generate a QR code which links to the individual event page
         private Bitmap createQR(int id) {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://www.flashflyerz.com/" + id.ToString(),
@@ -106,13 +110,17 @@ namespace FlashFlyers.Controllers
             Bitmap qrCodeImage = qrCode.GetGraphic(7, Color.FromArgb(0, 31, 85), Color.FromArgb(238, 174, 36), true);
             return qrCodeImage;
         }
+        
+        // function to split a string on space character
         private string[] breakString(string name) 
         {
             string[] broken_string;
             broken_string = name.Split(' ');
             return broken_string;
         }
-
+        
+        // this function is used to superimpose the QR  code on the flyer image provided by the user 
+        // the image is passed from the createEvent function, so this is called every time an event is created
         private async Task createImage(int id, IFormFile flyer) {
             var path = String.Concat(Directory.GetCurrentDirectory(), "/wwwroot/", id.ToString(), Path.GetExtension(flyer.FileName));
             Image flyer_image;
@@ -150,11 +158,8 @@ namespace FlashFlyers.Controllers
             ImageCodecInfo myImageCodecInfo = GetEncoderInfo("image/png");
             outputImage.Save(Directory.GetCurrentDirectory() + "/wwwroot/" + id.ToString() + "_with_qr.png", myImageCodecInfo, myEncoderParameters);
         }
-        //public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-        //    await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1);
-        //    return RedirectToAction("Testing");
-        //}
-
+        
+        // function to obtain image encoder info 
         private static ImageCodecInfo GetEncoderInfo(String mimeType) {
             int j;
             ImageCodecInfo[] encoders;
