@@ -15,11 +15,20 @@
         <button type="submit" class="textarea" id="submit" value="Submit">Submit Event</button>
     </form>
     @{ if (!Model.Any())
-                    {
-        <h1>No current events!</h1> }
-        @foreach (var evnt in Model.Reverse().Where(n => n.Approved == true && DateTime.Parse(n.Date) >= DateTime.Now)) {
+        {
+            <h1>No current events!</h1> }
+        @foreach (var evnt in Model.Reverse().Where(n => DateTime.Parse(n.Date) >= DateTime.Now))
+        {
             <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
-            <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
+            <figure>
+                <a href="~/@evnt.Id"> <img src="@(evnt.Id)_with_qr.png" class="LargeDisplay" /></a>
+                <figcaption>
+                    <a href="@(evnt.Id)_with_qr.png" download>Download Image with QR Code</a>
+                    /
+                    <a href="@(evnt.Id)_qr.png" download>Download QR Code</a>
+                    <br />
+                </figcaption>
+            </figure>
             <p>@evnt.Description</p>
             <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
             <p class="line" style="position: relative; right: 0;"></p>

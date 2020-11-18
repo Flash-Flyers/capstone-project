@@ -20,8 +20,9 @@
     <br />
     <!--Likes-->
     <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id asp-route-email=@User.Identity.Name>Like This Event</a>
-    @if (User.Identity.IsAuthenticated) {
-        <a style="color:forestgreen;" asp-controller="SavedEvents" asp-action="Save" asp-route-id=@Model.Id>Save Event</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a style="color:forestgreen;" asp-controller="FavEvents" asp-action="Save" asp-route-id=@Model.Id>Favorite Event</a>}
     }
     <p>Likes: @Model.Likes</p>
     <p>@Model.Description</p>
