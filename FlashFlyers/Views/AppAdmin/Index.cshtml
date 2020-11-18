@@ -12,7 +12,9 @@
     Events
 </h2>
 @{
-    //var last = Model.Last();
+    // this script will generate the html for every event to the AppAdmin
+    // this is in order to have a quick glance at events and the option to modify or delete by EventId
+
     @foreach (var evnt in Model)
     {
         DateTime eventDate = DateTime.Parse(@evnt.Date);
@@ -36,8 +38,10 @@
                 @*<p>Campus: @evnt.Campus</p>*@
                 <p>Likes @evnt.Likes</p>
                 <p>Description: @evnt.Description</p>
-                //This is not secure!
+     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     //Warning! This is not secure, use this tag for testing and demo purposes only
                 <a asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Delete Event</a>
+     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 <p class="line" style="position: relative; right: 0;"></p>
                 <br>
             }
