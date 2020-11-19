@@ -6,6 +6,7 @@
     <h2 style="position: relative; right:0;">
         Events
     </h2>
+    <!-->Post form data to SearchTag to recieve events matching the search terms.-->
     <form method="post" enctype="multipart/form-data" asp-controller="SearchTag" asp-action="Index">
 
         <label for="evTitle">Search</label>
@@ -14,7 +15,7 @@
 
         <button type="submit" class="textarea" id="submit" value="Submit">Submit Event</button>
     </form>
-    @{ if (!Model.Any())
+    @{ if (!Model.Any()) //Display all events with embedded links, and allow for downloading event images.
                     {
         <h1>No current events!</h1> }
         @foreach (var evnt in Model.Reverse().Where(n => DateTime.Parse(n.Date) >= DateTime.Now)) {
