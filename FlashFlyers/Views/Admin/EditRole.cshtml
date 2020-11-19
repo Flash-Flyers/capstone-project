@@ -5,7 +5,7 @@
 }
 
 <h1>Edit Role</h1>
-
+<!-->Page to edit existing roles.-->
 <form method="post" class="mt-3">
     <div class="form-group row">
         <label asp-for="Id" class="col-sm-2 col-form-label"></label>
@@ -48,7 +48,7 @@
             }
         </div>
         <div class="card-footer">
-            <a asp-action="EditUsersInRole" asp-controller="Admin" asp-route-roleId="@Model.Id"class="btn btn-primary" style="width:auto">Add/Remove Users</a>
+            <a asp-action="EditUsersInRole" asp-controller="Admin" asp-route-roleId="@Model.Id" class="btn btn-primary" style="width:auto">Add/Remove Users</a>
         </div>
     </div>
 </form>

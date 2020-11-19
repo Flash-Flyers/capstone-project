@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FlashFlyers.Controllers
 {
+    // this controller class handles the favorited events functionality
+    // it required the user is authenticated and looks at the standard model for events which the 
+    // user has saved for future reference.
     public class FavEventsController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -23,6 +26,8 @@ namespace FlashFlyers.Controllers
             _standardDbContext = standardDbContext;
             _userManager = userManager;
         }
+        
+        // user must be authenticated in order to access favorite events feature
         public IActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -39,22 +44,23 @@ namespace FlashFlyers.Controllers
             else
                 return View(new List<EventModel>());
         }
+        
+        // this function stores the saved event in a list unique to each user
         public IActionResult Save(int id)
         {
             if (_standardDbContext.Find<EventModel>(id) == null)
                 return Error();
 
-
             if (User.Identity.IsAuthenticated)
             {
-                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).SavedEvents;
+                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).SavedEvents; 
 
-                if (event_ids == null)
-                    event_ids = new List<int>();
+                if (event_ids == null) 
+                    event_ids = new List<int>(); // create a new list
 
-                if (!event_ids.Contains(id))
-                    event_ids.Add(id);
-                else event_ids.Remove(id);
+                if (!event_ids.Contains(id)) 
+                    event_ids.Add(id); // add it to the list
+                else event_ids.Remove(id); // else remove it from the list
 
                 _standardDbContext.SaveChanges();
                 _standardDbContext.Dispose();
@@ -62,7 +68,8 @@ namespace FlashFlyers.Controllers
             }
             return Error();
         }
-
+        
+        // error handling and display
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

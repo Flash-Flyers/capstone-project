@@ -12,6 +12,7 @@
 </head>
 <body>
     <header>
+        <!-- nav bar -->
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light navbar_style box-shadow mb-3">
             <div class="container">
                 <a class="navbar_text" asp-area="" asp-controller="Home" asp-action="Index">Flash Flyerz!</a>
@@ -38,16 +39,19 @@
                             }
                         </li>
                     </ul>
-                </div>
-            </div>
+                </div> <!-- end of navbar-collapse -->
+            </div> <!-- end of container -->
         </nav>
     </header>
+    
     <div class="container">
+        <!-- main body renders the body of each view -->
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    <!-- footer details -->
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - Flash Flyerz!

@@ -4,6 +4,7 @@
     <h2 style="position: relative; right:0;">
         Events
     </h2>
+    <!-->Post form data to SearchTag to recieve events matching the search terms.-->
     <form method="post" enctype="multipart/form-data" asp-controller="SearchTag">
 
         <label for="evTitle">Search</label>
@@ -11,7 +12,8 @@
         <button type="submit" class="textarea" id="search" value="search">Search</button>
     </form>
     <h1></h1>
-    @{ 
+    
+    @{ // Display all events matched events returned from search. 
         if (!Model.Any()) {
             <h1>No events found!</h1> 
         }

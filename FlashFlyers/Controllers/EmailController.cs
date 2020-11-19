@@ -22,6 +22,8 @@ using FlashFlyers.Models;
 
 namespace FlashFlyers.Controllers
 {
+    // this controller class will write to the database when a user
+    // clicks on the link to schedule an email reminder
     public class EmailController : Controller
     {
         private readonly StandardModel _standardDbContext;
@@ -33,11 +35,15 @@ namespace FlashFlyers.Controllers
         {
             return View();
         }
-
+        
+        // this LocalRedirectResult method will Add to the Email Reminder table
+        // it stores the EmailReminderId, the EventId, Date, and Email
+        // these are all passed from the asp-action in the Event View, "Event.html"
         public LocalRedirectResult scheduleEmail(int id, string date, string email)
         {
             if (email != null)
             {
+                // adds parameters to the Email Reminder table
                 _standardDbContext.Add(new EmailReminderModel
                 {
                     EmailReminderId = new Random().Next(),
@@ -50,6 +56,7 @@ namespace FlashFlyers.Controllers
             _standardDbContext.Dispose();
             string idStr = id.ToString();
             string s = "/" + idStr;
+            //return to the View
             return LocalRedirect(s);
         }
     }

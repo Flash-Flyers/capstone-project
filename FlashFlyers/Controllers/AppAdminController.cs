@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FlashFlyers.Controllers
 {
+    // this controller class is meant to handle event deletion and modification
     //[Authorize(Roles ="Admin")]
     public class AppAdminController : Controller
     {
@@ -37,7 +38,8 @@ namespace FlashFlyers.Controllers
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        
+        // function for removing an event by its Id
         public IActionResult DeleteEvent(int id) {
             var Event = new EventModel { Id = id };
             _standardDbContext.Remove(Event);
@@ -45,6 +47,11 @@ namespace FlashFlyers.Controllers
             _standardDbContext.Dispose();
             return RedirectToAction("Index");
         }
+        
+        // function for event modification by replacing the event in the database
+        // works similarly to event creation except the event Id is preserved
+        // this  is in order to keep the url for the event page consistent,
+        // which allows for features such as QR codes and Mapbox to function properly
 
         public IActionResult ApproveEvent(int id)
         {

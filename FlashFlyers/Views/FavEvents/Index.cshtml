@@ -6,7 +6,7 @@
     <h2 style="position: relative; right:0;">
         Saved Events
     </h2>
-    @{
+    @{ // Show all user favorited events. Must be logged in to access the page.
         if (!Model.Any()) {
             <h1>Favorited Events</h1>
         }

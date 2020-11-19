@@ -13,17 +13,18 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace FlashFlyers.Controllers
 {
+    // standard controller for returning the View for the Homepage 
     public class HomeController : Controller
     {
         private readonly StandardModel _standardDbContext;
         public HomeController(StandardModel standardDbContext) {
             _standardDbContext = standardDbContext;
         }
-
+        // requires standardDbContext in order to display the Events on the Homepage
         public IActionResult Index() {
             return View(_standardDbContext.Events);
         }
-
+        // returns error view for error tracability
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
