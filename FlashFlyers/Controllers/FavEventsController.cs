@@ -53,14 +53,14 @@ namespace FlashFlyers.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).SavedEvents;
+                List<int> event_ids = _standardDbContext.Users.Find(_userManager.GetUserId(User)).SavedEvents; 
 
-                if (event_ids == null)
-                    event_ids = new List<int>();
+                if (event_ids == null) 
+                    event_ids = new List<int>(); // create a new list
 
-                if (!event_ids.Contains(id))
-                    event_ids.Add(id);
-                else event_ids.Remove(id);
+                if (!event_ids.Contains(id)) 
+                    event_ids.Add(id); // add it to the list
+                else event_ids.Remove(id); // else remove it from the list
 
                 _standardDbContext.SaveChanges();
                 _standardDbContext.Dispose();
