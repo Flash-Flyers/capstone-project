@@ -17,7 +17,7 @@
     @{ if (!Model.Any())
         {
             <h1>No current events!</h1> }
-        @foreach (var evnt in Model.Reverse().Where(n => DateTime.Parse(n.Date) >= DateTime.Now))
+        @foreach (var evnt in Model.Reverse().Where(n => DateTime.Parse(n.Date) >= DateTime.Now && n.Approved))
         {
             <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
             <figure>
