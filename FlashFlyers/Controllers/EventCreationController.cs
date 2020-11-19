@@ -14,6 +14,7 @@ using System.Drawing.Imaging;
 using QRCoder;
 using System.Drawing.Drawing2D;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FlashFlyers.Controllers
 {
@@ -22,10 +23,12 @@ namespace FlashFlyers.Controllers
     [Authorize]
     public class EventCreationController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly StandardModel _standardDbContext;
-        public EventCreationController(StandardModel standardDbContext)
+        public EventCreationController(StandardModel standardDbContext, UserManager<ApplicationUser> userManager)
         {
             _standardDbContext = standardDbContext;
+            _userManager = userManager;
         }
 
         public IActionResult Index() {
@@ -76,6 +79,8 @@ namespace FlashFlyers.Controllers
             _standardDbContext.Add(new EventModel
             {
                 Id = id,
+                Approved = false,
+                Author = _userManager.GetUserId(User),
                 Title = name,
                 Description = description,
                 FileName = String.Concat(id.ToString(), Path.GetExtension(flyer.FileName)),
@@ -86,8 +91,8 @@ namespace FlashFlyers.Controllers
                 Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
                 Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
                 Likes = 0
-            }); 
-
+            });
+            _standardDbContext.Users.Find(_userManager.GetUserId(User)).AuthoredEvents.Add(id);
             _standardDbContext.SaveChanges();
             _standardDbContext.Dispose();
 

@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace FlashFlyers.Controllers
 {
     // this controller class is meant to handle event deletion and modification
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class AppAdminController : Controller
     {
         private readonly StandardModel _standardDbContext;
@@ -52,6 +52,17 @@ namespace FlashFlyers.Controllers
         // works similarly to event creation except the event Id is preserved
         // this  is in order to keep the url for the event page consistent,
         // which allows for features such as QR codes and Mapbox to function properly
+
+        public IActionResult ApproveEvent(int id)
+        {
+            EventModel unapproved_event = _standardDbContext.Find<EventModel>(id);
+            if (unapproved_event != null)
+                unapproved_event.Approved = true;
+            _standardDbContext.SaveChanges();
+            _standardDbContext.Dispose();
+            return RedirectToAction("Index");
+        }
+
         public IActionResult ModifyEvent(int id, string name, string description, IFormFile flyer, string date, string time, string building, int room/*, string campus*/)
         {
             var Event = new EventModel { Id = id };

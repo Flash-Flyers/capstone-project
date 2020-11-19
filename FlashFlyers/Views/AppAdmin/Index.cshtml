@@ -41,7 +41,10 @@
      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      //Warning! This is not secure, use this tag for testing and demo purposes only
                 <a asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Delete Event</a>
-     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if (!evnt.Approved) {
+                    <a style="color:forestgreen;" asp-controller="AppAdmin" asp-action="ApproveEvent" asp-route-id=@evnt.Id>Approve Event</a>
+                    <a style="color:darkred;" asp-controller="AppAdmin" asp-action="DeleteEvent" asp-route-id=@evnt.Id>Disapprove Event</a>
+                }
                 <p class="line" style="position: relative; right: 0;"></p>
                 <br>
             }

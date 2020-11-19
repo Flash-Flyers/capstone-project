@@ -12,7 +12,7 @@ namespace FlashFlyers.Controllers
 {
     // this controller class handles admin role assignment
     // it interfaces with the database in order to assign and modify user roles
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;

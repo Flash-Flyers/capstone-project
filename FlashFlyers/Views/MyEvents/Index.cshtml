@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EventModel>
+@{
+    ViewData["Title"] = "My Events";
+}
+<body>
+    <h2 style="position: relative; right:0;">
+        My Events
+    </h2>
+    @{ if (!Model.Any())
+                    {
+        <h1>No created events!</h1> }
+        @foreach (var evnt in Model.Reverse()) {
+            <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
+            if (evnt.Approved){
+            <h1 style="color:forestgreen;">Approved!</h1>
+            }
+            else {
+            <h1 style="color:darkred;">Unapproved!</h1>
+            }
+            <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" /></a>
+            <p>@evnt.Description</p>
+            <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room </p>
+            @if (User.Identity.IsAuthenticated) {
+                <a style="color:darkred;" asp-controller="MyEvents" asp-action="UserEventDelete" asp-route-id=@evnt.Id>Delete Event</a>
+            }
+            <p class="line" style="position: relative; right: 0;"></p>
+        }
+    }
+</body>

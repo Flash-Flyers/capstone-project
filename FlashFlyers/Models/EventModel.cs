@@ -8,6 +8,8 @@ namespace FlashFlyers.Models
     public class EventModel
     {
         public int Id { get; set; } //Event ID number
+        public bool Approved { get; set; } //Author of the event
+        public string Author { get; set; } //Author of the event
         public string Title { get; set; } //Event Title
         public string Description { get; set; } //Event Description
         public string FileName { get; set; } //Cover Image file
