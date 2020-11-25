@@ -28,6 +28,9 @@ namespace FlashFlyers.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<List<int>>("AuthoredEvents")
+                        .HasColumnType("integer[]");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -65,6 +68,9 @@ namespace FlashFlyers.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<List<int>>("SavedEvents")
+                        .HasColumnType("integer[]");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
@@ -87,12 +93,39 @@ namespace FlashFlyers.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("FlashFlyers.Models.EmailReminderModel", b =>
+                {
+                    b.Property<int>("EmailReminderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("EmailReminderId");
+
+                    b.ToTable("EmailReminder");
+                });
+
             modelBuilder.Entity("FlashFlyers.Models.EventModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<bool>("Approved")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("text");
 
                     b.Property<string>("Building")
                         .HasColumnType("text");
