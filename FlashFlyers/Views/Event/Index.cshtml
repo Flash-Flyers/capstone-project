@@ -26,13 +26,17 @@
     }
     <br />
     <!--Likes-->
-    <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id asp-route-email=@User.Identity.Name>Like This Event!</a>
-    <p>This Event has @Model.Likes Likes!</p>
+    <p>
+        <a asp-controller="Event" asp-action="Like" asp-route-id=@Model.Id asp-route-email=@User.Identity.Name>Like This Event!</a>
+        This Event has @Model.Likes Likes!
+    </p>
     <p>@Model.Description</p>
-    <p> This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room</p>
-    <!--Email Reminder-->
-    <a asp-controller="Email" asp-action="scheduleEmail" asp-route-id=@Model.Id asp-route-date=@Model.Date asp-route-email=@User.Identity.Name>Schedule Reminder Email for 2 Days Before Event</a>
-    <br />
+    <p>
+        This event is happening on @Model.Date at @Model.Time at @Model.Building @Model.Room
+        <br />
+        <!--Email Reminder-->
+        <a asp-controller="Email" asp-action="scheduleEmail" asp-route-id=@Model.Id asp-route-date=@Model.Date asp-route-email=@User.Identity.Name>Schedule Reminder Email for 2 Days Before Event</a>
+    </p>
     <div id='map' style='width: 900px; height: 600px;'></div>
     <br />
     <p class="line" style="position: relative; right: 0;"></p>
