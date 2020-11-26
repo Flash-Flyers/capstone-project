@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FlashFlyers.Models;
+using FlashFlyers.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlashFlyers.Controllers
@@ -35,11 +36,24 @@ namespace FlashFlyers.Controllers
                                 int value = _standardDbContext.Find<SearchTagModel>(broken_string[i]).event_id[k];
                                 events.Add(value, _standardDbContext.Find<EventModel>(value)); //the event id is added as well as the model
                             }
-            
                 return new List<EventModel>(events.Values);
             }
-            public IActionResult Index(string search) {
-                return View(SearchAction(search));
+            public IActionResult Index(string search, int page_number) {
+     
+                List<EventModel> events = SearchAction(search);
+                List<EventModel> page_events = new List<EventModel>();
+                int page_length = 10;
+                for (int i = 0; i < page_length; ++i) 
+                {
+                    int index = i + (page_number * page_length);
+                    if (index < events.Count())
+                        page_events.Add(events[index]);
+                }
+
+                System.Diagnostics.Debug.WriteLine("Page: " + page_number + " page events count : " + page_events.Count());
+
+                int total_pages = (int)MathF.Ceiling(events.Count / 10.0f);
+                return View(new SearchResultsViewModel { PageNumber = page_number, Search = search, Pages = total_pages, Events = page_events });
             }
         }
 }

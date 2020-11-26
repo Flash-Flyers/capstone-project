@@ -42,7 +42,7 @@ namespace FlashFlyers.Controllers
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+
         // this async function is used to open the database context and store an event instance using the
         // parameters passed through an html form
         // it includes logic for the tagging system, as well as calls to function createImage
@@ -53,7 +53,7 @@ namespace FlashFlyers.Controllers
                 return Content("Name too short");
             if (flyer == null || Path.GetExtension(flyer.FileName) == String.Empty || Path.GetExtension(flyer.FileName) == null)
                 return Content("Flyer not attached, or incorrect file extension.");
-            
+
             string[] broken_string = breakString(name);
 
             for (int i = 0; i < broken_string.Length; ++i)
@@ -101,11 +101,12 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
         // the purpose of this function is to create a quick event for easier testing
-        public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
+        public async Task<IActionResult> CreateEventTesting(IFormFile flyer)
+        {
             await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0);
             return RedirectToAction("Testing");
         }
-        
+
         // this function user the QRCoder API in order to generate a QR code which links to the individual event page
         private Bitmap createQR(int id) {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();

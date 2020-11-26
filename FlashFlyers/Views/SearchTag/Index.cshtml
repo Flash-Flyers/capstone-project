@@ -1,23 +1,23 @@
-﻿@model IEnumerable<EventModel>
-@{ ViewData["Title"] = "Home"; }
+﻿@model FlashFlyers.ViewModels.SearchResultsViewModel
+@{ ViewData["Title"] = "Search Results"; }
 <body>
     <h2 style="position: relative; right:0;">
         Events
     </h2>
-    <!-->Post form data to SearchTag to recieve events matching the search terms.-->
-    <form method="post" enctype="multipart/form-data" asp-controller="SearchTag">
-
-        <label for="evTitle">Search</label>
-        <input type="text" class="textarea" id="search" name="search" maxlength="50" required />
-        <button type="submit" class="textarea" id="search" value="search">Search</button>
-    </form>
+    <partial name="_Search" />
     <h1></h1>
-    
-    @{ // Display all events matched events returned from search. 
-        if (!Model.Any()) {
-            <h1>No events found!</h1> 
+    @{ // Display all events matched events returned from search.
+        for (int i = 0; i < Model.Pages; ++i)
+        {
+            if (i != Model.PageNumber)
+            {
+                <a asp-area="" asp-controller="SearchTag" asp-action="Index" asp-route-search="@Model.Search" asp-route-page_number="@i"> @(i + 1)</a>
+            }
+            else
+            { <a>@(i + 1)</a>}
         }
-        @foreach (var evnt in Model.Reverse()) {
+        foreach (var evnt in Model.Events)
+        {
             {
                 <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
                 <a href="~/@evnt.Id"> <embed src="@(evnt.Id)_with_qr.png" style="vertical-align: middle;"></a>
@@ -25,6 +25,7 @@
                 <p>This event is happening on @evnt.Date at @evnt.Time at @evnt.Building @evnt.Room</p>
                 <p class="line" style="position: relative; right: 0;"></p>
             }
-         } 
+        }
+
     }
 </body>
