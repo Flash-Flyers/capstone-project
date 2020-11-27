@@ -4,7 +4,7 @@ for details on configuring this project to bundle and minify static web assets. 
 a.navbar-brand {
     white-space: normal;
     text-align: center;
-    /*word-break: break-all;*/
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
@@ -129,6 +129,14 @@ body {
     /*left: 10px;*/
     font-weight: bold;
     font-size: 16px;
+}
+
+#user_settings.navbar_text{
+    top: 6px;
+}
+
+#home_title.navbar_text {
+    top: 2px;
 }
 
 .navbar {
