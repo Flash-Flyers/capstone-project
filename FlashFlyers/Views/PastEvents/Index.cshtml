@@ -59,13 +59,14 @@
             {
                 //Hard-coded base directory for now.
                 <a href="https://localhost:44395/@evnt.Id" class="h1"> @evnt.Title</a>
-                <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName" style="height: 250px; width: 500px; vertical-align: middle;"></a>
+                <br />
+                <a href="https://localhost:44395/@evnt.Id"> <embed src="@evnt.FileName"></a>
+                <br />
                 {
                     <p>Date: @evnt.Date</p>
                     <p>Time: @evnt.Time</p>
                     <p>Building: @evnt.Building</p>
                     <p>Room: @evnt.Room</p>
-                    @*<p>Campus: @evnt.Campus</p>*@
                     <p class="line" style="position: relative; right: 0;">Description: @evnt.Description</p>
                 }
             }
