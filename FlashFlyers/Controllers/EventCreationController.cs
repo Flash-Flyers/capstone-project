@@ -103,7 +103,7 @@ namespace FlashFlyers.Controllers
         }
         // the purpose of this function is to create a quick event for easier testing
         public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0);
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0, "Music");
             return RedirectToAction("Testing");
         }
         
