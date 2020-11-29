@@ -9,11 +9,11 @@
     <!--Post form data to SearchTag to recieve events matching the search terms.-->
     <form method="post" enctype="multipart/form-data" asp-controller="SearchTag" asp-action="Index">
 
-        <label for="evTitle">Search</label>
+        @*<label for="evTitle">Search For An Event:</label>*@
         <input type="text" class="textarea" id="search" name="search" maxlength="50" required />
-        <br />
+        @*<br />*@
 
-        <button type="submit" class="textarea" id="submit" value="Submit">Submit Event</button>
+        <button type="submit" class="textarea" id="submit" value="Submit">Search</button>
     </form>
     @{ if (!Model.Any()) //Display all events with embedded links, and allow for downloading event images.
         {
