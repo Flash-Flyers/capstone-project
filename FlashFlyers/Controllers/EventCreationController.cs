@@ -47,7 +47,7 @@ namespace FlashFlyers.Controllers
         // parameters passed through an html form
         // it includes logic for the tagging system, as well as calls to function createImage
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes)
+        public async Task<IActionResult> CreateEvent(string name, string description, IFormFile flyer, string date, string time, string building, int room, int likes, string category)
         {
             if (name == null || name.Length == 0)
                 return Content("Name too short");
@@ -90,7 +90,8 @@ namespace FlashFlyers.Controllers
                 Room = room,
                 Latitude = _standardDbContext.Find<LocationModel>(building).Latitude,
                 Longitude = _standardDbContext.Find<LocationModel>(building).Longitude,
-                Likes = 0
+                Likes = 0,
+                Category = category
             });
             _standardDbContext.Users.Find(_userManager.GetUserId(User)).AuthoredEvents.Add(id);
             _standardDbContext.SaveChanges();
@@ -101,9 +102,8 @@ namespace FlashFlyers.Controllers
             return RedirectToAction("Index");
         }
         // the purpose of this function is to create a quick event for easier testing
-        public async Task<IActionResult> CreateEventTesting(IFormFile flyer)
-        {
-            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0);
+        public async Task<IActionResult> CreateEventTesting(IFormFile flyer) {
+            await CreateEvent("This is a test for the event name", "This is a test description", flyer, "2021-07-22", "15:30", "Mathematical Sciences", 1, 0, "Music");
             return RedirectToAction("Testing");
         }
 

@@ -123,11 +123,20 @@ body {
 
 .navbar_text {
     color: white;
-    padding-left: 20px;
+    padding: 10px;
     position: relative;
-    top: 10px;
-    left: 10px;
+    /*top: 10px;*/
+    /*left: 10px;*/
     font-weight: bold;
+    font-size: 16px;
+}
+
+#user_settings.navbar_text{
+    top: 6px;
+}
+
+#home_title.navbar_text {
+    top: 2px;
 }
 
 .navbar {
