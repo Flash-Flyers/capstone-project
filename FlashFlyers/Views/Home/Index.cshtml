@@ -1,24 +1,26 @@
-﻿@model IEnumerable<EventModel>
+﻿@model FlashFlyers.ViewModels.SearchResultsViewModel
 @{
     ViewData["Title"] = "Home";
 }
 <body>
     <h2 style="position: relative; right:0;">
-        Events
+        Home
     </h2>
     <!--Post form data to SearchTag to recieve events matching the search terms.-->
-    <form method="post" enctype="multipart/form-data" asp-controller="SearchTag" asp-action="Index">
-
-        @*<label for="evTitle">Search For An Event:</label>*@
-        <input type="text" class="textarea" id="search" name="search" maxlength="50" required />
-        @*<br />*@
-
-        <button type="submit" class="textarea" id="submit" value="Submit">Search</button>
-    </form>
-    @{ if (!Model.Any()) //Display all events with embedded links, and allow for downloading event images.
+    <partial name="_Search"/>
+    @{ if (!Model.Events.Any()) //Display all events with embedded links, and allow for downloading event images.
         {
             <h1>No current events!</h1> }
-        @foreach (var evnt in Model.Reverse().Where(n => DateTime.Parse(n.Date) >= DateTime.Now && n.Approved))
+        for (int i = 0; i < Model.Pages; ++i)
+        {
+            if (i != Model.PageNumber)
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-page_number="@i"> @(i + 1)</a>
+            }
+            else
+            { <a>@(i + 1)</a>}
+        }
+        @foreach (var evnt in Model.Events.Reverse().Where(n => DateTime.Parse(n.Date) >= DateTime.Now && n.Approved))
         {
             <a href="~/@evnt.Id"> <h1>@evnt.Title</h1></a>
             <figure>
